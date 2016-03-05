@@ -13,7 +13,7 @@ namespace Tetris
         private IShape current;
         private IBoard board;
 
-        public ShapeProxy(Board board,Shape current)
+        public ShapeProxy(IBoard board, IShape current)
         {
             this.board = board;
             this.current = current;
@@ -22,22 +22,26 @@ namespace Tetris
 
         public virtual void OnJoinPile()
         {
+            if(JoinPile != null)
+            {
+                JoinPile();
+            }
 
         }
 
         public void DeployNewShape()
         {
-            throw new NotImplementedException();
+            
         }
 
         public int Length
         {
-            get { return rnd.Next(2, 6); }
+            get { return current.Length; }
         }
 
         public Block this[int i]
         {
-            get;
+            get { return current[i]; }
         }
 
         public event JoinPileHandler JoinPile;

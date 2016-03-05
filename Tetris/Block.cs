@@ -60,7 +60,7 @@ namespace Tetris
         }
         public void TryRotate(Point offset)
         {
-               
+            
         }
 
         public void MoveLeft()
