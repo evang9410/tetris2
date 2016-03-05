@@ -22,9 +22,10 @@ namespace Tetris
         private Color colour;
         private Point pos;
 
-        public Block(Color colour)
+        public Block(Color colour, Point pos)
         {
             this.colour = colour;
+            this.pos = pos;
         }
 
         public Color Colour
