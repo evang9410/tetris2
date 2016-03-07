@@ -43,7 +43,7 @@ namespace Tetris
             }
         }
 
-        public void MovdRight()
+        public void MoveRight()
         {
             for (int i = 0; i < block.Length; i++)
             {

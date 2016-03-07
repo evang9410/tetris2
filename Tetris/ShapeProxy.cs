@@ -31,7 +31,32 @@ namespace Tetris
 
         public void DeployNewShape()
         {
-            
+            int shape = rnd.Next(0, 7);
+
+            switch (shape)
+            {
+                case 0: 
+                    current = new ShapeI();
+                    break;
+                case 1:
+                    current = new ShapeJ();
+                    break;
+                case 2:
+                    current = new ShapeL();
+                    break;
+                case 3:
+                    current = new ShapeO();
+                    break;
+                case 4:
+                    current = new ShapeS();
+                    break;
+                case 5:
+                    current = new ShapeT();
+                    break;
+                case 6:
+                    current = new ShapeZ();
+                    break;
+            }
         }
 
         public int Length
@@ -48,32 +73,41 @@ namespace Tetris
 
         public void MoveLeft()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < current.Length; i++)
+            {
+                current[i].MoveLeft();
+            }
         }
 
-        public void MovdRight()
+        public void MoveRight()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < current.Length; i++)
+            {
+                current[i].MoveRight();
+            }
         }
 
         public void MoveDown()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < current.Length; i++)
+            {
+                current[i].MoveDown();
+            }
         }
 
         public void Drop()
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Rotate()
         {
-            throw new NotImplementedException();
+            current.Rotate();
         }
 
         public void Reset()
         {
-            throw new NotImplementedException();
+            current.Reset();
         }
     }
 }

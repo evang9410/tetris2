@@ -24,7 +24,7 @@ namespace Tetris
         event JoinPileHandler JoinPile;
 
         void MoveLeft();
-        void MovdRight();
+        void MoveRight();
         void MoveDown();
         void Drop();
         void Rotate();
