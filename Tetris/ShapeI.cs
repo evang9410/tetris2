@@ -7,41 +7,41 @@ using Microsoft.Xna.Framework;
 
 namespace Tetris
 {
-    //Color.Aquamarine
     public class ShapeI : Shape
     {
-        private Block[] defaultPos;
-        private Block[] rotation1;
-        public ShapeI() : base()
+        private Block[][] rotations;
+        public ShapeI()
+            : base()
         {
-            block[0] = new Block(Color.Aquamarine, new Point(0, 0));
+            rotations[0][0] = new Block(Color.Aquamarine, new Point(0, 0));
+            rotations[0][1] = new Block(Color.Aquamarine, new Point(0, 1));
+            rotations[0][2] = new Block(Color.Aquamarine, new Point(0, 2));
+            rotations[0][3] = new Block(Color.Aquamarine, new Point(0, 3));
 
-            block[1] = new Block(Color.Aquamarine, new Point(0, 1));
-            block[2] = new Block(Color.Aquamarine, new Point(0, 2));
-            block[3] = new Block(Color.Aquamarine, new Point(0, 3));
+            rotations[1][0] = new Block(Color.Aquamarine, new Point(0, 0));
+            rotations[1][1] = new Block(Color.Aquamarine, new Point(1, 0));
+            rotations[1][2] = new Block(Color.Aquamarine, new Point(2, 0));
+            rotations[1][3] = new Block(Color.Aquamarine, new Point(3, 0));
 
-            defaultPos = block;
-            rotation1[0] = new Block(Color.Aquamarine, new Point(0, 0));
-            rotation1[1] = new Block(Color.Aquamarine, new Point(1, 0));
-            rotation1[2] = new Block(Color.Aquamarine, new Point(2, 0));
-            rotation1[3] = new Block(Color.Aquamarine, new Point(3, 0));
-
-
+            block = rotations[0];
         }
         public override void Reset()
         {
-            block = defaultPos;
-            currentRotation = 0;
+            block = rotations[0];
         }
 
         public override void Rotate()
         {
-            if (currentRotation == 1)
+            if (currentRotation == 0)
             {
-                block = rotation1;
+                block = rotations[1];
+                currentRotation = 1;
             }
             else
-                block = defaultPos;
+            {
+                block = rotations[0];
+                currentRotation = 0;
+            }
         }
     }
 }
