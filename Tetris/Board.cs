@@ -129,6 +129,7 @@ namespace Tetris
             if (placeable)
             {
                 this.shape = shape;
+                this.shape.JoinPile += addToPile 
             }
         }
     }

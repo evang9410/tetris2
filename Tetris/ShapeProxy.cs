@@ -20,15 +20,6 @@ namespace Tetris
             
         }
 
-        public virtual void OnJoinPile()
-        {
-            if(JoinPile != null)
-            {
-                JoinPile();
-            }
-
-        }
-
         public void DeployNewShape()
         {
             int shape = rnd.Next(0, 7);
@@ -37,24 +28,31 @@ namespace Tetris
             {
                 case 0: 
                     current = new ShapeI();
+                    onJoinPile(current);
                     break;
                 case 1:
                     current = new ShapeJ();
+                    onJoinPile(current);
                     break;
                 case 2:
                     current = new ShapeL();
+                    onJoinPile(current);
                     break;
                 case 3:
                     current = new ShapeO();
+                    onJoinPile(current);
                     break;
                 case 4:
                     current = new ShapeS();
+                    onJoinPile(current);
                     break;
                 case 5:
                     current = new ShapeT();
+                    onJoinPile(current);
                     break;
                 case 6:
                     current = new ShapeZ();
+                    onJoinPile(current);
                     break;
             }
         }
@@ -70,6 +68,13 @@ namespace Tetris
         }
 
         public event JoinPileHandler JoinPile;
+        protected virtual void onJoinPile(IShape current)
+        {
+            if (JoinPile != null)
+            {
+                JoinPile(current);
+            }
+        }
 
         public void MoveLeft()
         {
