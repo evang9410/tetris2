@@ -34,7 +34,13 @@ namespace Tetris
       
 
         public event GameOverHandler GameOver;
-        //protected virtual void OnGameOver
+        protected virtual void OnGameOver(bool isOver)
+        {
+            if (GameOver != null)
+            {
+                GameOver(isOver);
+            }
+        }
 
         public int GetLength(int rank)
         {
@@ -104,9 +110,26 @@ namespace Tetris
             get { return board[x, y]; }
         }
 
-        private void addShape()
+        private void addToPile(IShape shape)
         {
+            int offset = board.GetLength(1) / 2;
+            bool placeable = true;
 
+            for(int i = 0; i < shape.Length; i++)
+            {
+                shape[i].Position = new Point(shape[i].Position.X + offset, shape[i].Position.Y);
+
+                if (!board[shape[i].Position.X, shape[i].Position.Y].Equals(Color.Black))
+                {
+                    placeable = false;
+                    this.GameOver(!placeable);
+                }
+            }
+
+            if (placeable)
+            {
+                this.shape = shape;
+            }
         }
     }
 }
