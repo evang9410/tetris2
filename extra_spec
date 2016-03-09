@@ -1,0 +1,21 @@
+Hello,
+
+A couple of clarification on the Tetris UML diagram:
+
+1- the Board class has a 2-D array that completely abstracts away the pixel size of each Block. The Color of the array tells you if the board is free or occupied at that position. So the Block's Position point is just tracking the row/column in the Board
+
+2- in our design, the Shape abstract class is responsible for detecting that it has hit the bottom/pile. It determines this when it tries to move down but cannot since one of the blocks is blocked on the Board -> this is why the Shape and Block have a handle to the IBoard
+
+3- when the Shape determines it has hit the pile, it fires an event. You can either have the JoinPileHandler delegate signature take no parameters and return void; or it can take the current Shape (i.e., this) and return void. Both implementations will work, you just need to be consistent.
+
+4- The Score class has a Level property. This is looking ahead, to when we will want the MonoGame classes to speed up as the level increases. You can code it as something simple, such as the following pseudo-code:
+
+Level = min ( (number of rows completed in pile/10 + 1), 10)
+i.e., cannot get above level 10
+
+5- Finally, you do not have to stick strictly to the UML diagram provided, but do run by any desired changes with your instructor.
+
+(Dan, FYI, if you want to share with your section)
+
+Cheers,
+Jaya
