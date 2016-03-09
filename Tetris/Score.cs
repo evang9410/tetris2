@@ -34,7 +34,7 @@ namespace Tetris
         private void incrementLinesCleared(int num)
         {
             lines += num;
-            point += num * num;
+            scores += num * num;
             level = Math.Min(lines /10 + 1, 10);
         }
          

@@ -7,7 +7,5 @@ namespace TetrisTest
     [TestClass]
     public class ScoreTest
     {
-        [TestMethod]
-        public void Test_
     }
 }

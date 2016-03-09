@@ -16,7 +16,12 @@ namespace Tetris
         public Shape()
         {
             block = new Block[4];
+            this.board = board;
             currentRotation = 0;
+        }
+        public Block[] blocks
+        {
+            get { return block; }
         }
         public int Length
         {

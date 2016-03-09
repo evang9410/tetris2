@@ -9,7 +9,7 @@ namespace Tetris
 {
     public class ShapeI : Shape
     {
-        private Block[][] rotations;
+        private Block[][] rotations = new Block[2][];
         public ShapeI()
             : base()
         {
@@ -43,5 +43,6 @@ namespace Tetris
                 currentRotation = 0;
             }
         }
+
     }
 }
