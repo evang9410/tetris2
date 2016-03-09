@@ -18,7 +18,8 @@ namespace Tetris
         {
             this.board = board;
             this.shape = shape;
-            this.shape.JoinPile += linesToClear;
+
+            this.shape.JoinPile += addToPile;
             this.shapeFactory = shapeFactory;
         }
 
@@ -27,8 +28,8 @@ namespace Tetris
 
         protected virtual void onLinesCleared(int lines)
         {
-           
-            if (LinesCleared != null) 
+
+            if (LinesCleared != null)
                 LinesCleared(lines);
         }
       
@@ -53,9 +54,10 @@ namespace Tetris
             
         }
 
-       public void linesToClear()
+       public int linesToClear()
         {
            //call method that adds current shape to board
+            addToPile(shape);
             int x = board.GetLength(0);
             int y = board.GetLength(1);
             int colored_blocks = 0;
@@ -81,7 +83,9 @@ namespace Tetris
             }
             if(lines >= 1)
                 onLinesCleared(lines);
-            shapeFactory.DeployNewShape();
+            
+           shapeFactory.DeployNewShape();
+           return lines;
         }
 
         private void clearLine(int x)
@@ -129,7 +133,7 @@ namespace Tetris
             if (placeable)
             {
                 this.shape = shape;
-                this.shape.JoinPile += addToPile 
+                this.shape.JoinPile += addToPile; 
             }
         }
     }

@@ -102,7 +102,7 @@ namespace Tetris
 
         public void Drop()
         {
-            
+            current.Drop();
         }
 
         public void Rotate()
