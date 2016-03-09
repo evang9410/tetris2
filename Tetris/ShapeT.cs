@@ -9,10 +9,13 @@ namespace Tetris
 {
     public class ShapeT: Shape
     {
-        private Block[][] rotations;
+        private Block[][] rotations = new Block[4][];
         public ShapeT()
             : base()
         {
+            for (int i = 0; i < rotations.Length; i++)
+                rotations[i] = new Block[4];
+
             rotations[0][0] = new Block(Color.Purple, new Point(0, 0));
             rotations[0][1] = new Block(Color.Purple, new Point(1, 0));
             rotations[0][2] = new Block(Color.Purple, new Point(2, 0));

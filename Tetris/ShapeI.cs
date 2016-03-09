@@ -13,6 +13,9 @@ namespace Tetris
         public ShapeI()
             : base()
         {
+            for(int i = 0 ; i < 2; i++)
+                rotations[i] = new Block[4];
+            
             rotations[0][0] = new Block(Color.Aquamarine, new Point(0, 0));
             rotations[0][1] = new Block(Color.Aquamarine, new Point(0, 1));
             rotations[0][2] = new Block(Color.Aquamarine, new Point(0, 2));

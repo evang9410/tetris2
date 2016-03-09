@@ -16,12 +16,12 @@ namespace Tetris
         public Shape()
         {
             block = new Block[4];
-            this.board = board;
             currentRotation = 0;
         }
         public Block[] blocks
         {
             get { return block; }
+            set { block = value; }
         }
         public int Length
         {
@@ -37,7 +37,7 @@ namespace Tetris
 
         public void MoveLeft() 
         {
-            for(int i = 0; i <block.Length;i++)
+            /*for(int i = 0; i <block.Length;i++)
             {
                 if (block[i].tryMoveLeft())
                 {
@@ -45,33 +45,39 @@ namespace Tetris
                 }
                 else
                     break;
+            }*/
+            foreach (Block b in blocks)
+            {
+                if (!b.tryMoveLeft())
+                    return;
+            }
+            foreach (Block b in blocks)
+            {
+                b.MoveLeft();
             }
         }
 
         public void MoveRight()
         {
-            for (int i = 0; i < block.Length; i++)
+            foreach (Block b in blocks)
             {
-                if (block[i].tryMoveRight())
-                {
-                    block[i].MoveRight();
-                }
-                else
-                    break;
+                if (!b.tryMoveRight())
+                    return;
+            }
+            foreach (Block b in blocks)
+            {
+                b.MoveRight();
             }
         }
 
         public void MoveDown()
         {
-            for (int i = 0; i < block.Length; i++)
+            foreach (Block b in blocks)
             {
-                if (block[i].tryMoveDown())
-                {
-                    block[i].MoveDown();
-                }
-                else
-                    break;
+                if (!b.tryMoveDown())
+                    return;
             }
+            
         }
 
         public void Drop() 

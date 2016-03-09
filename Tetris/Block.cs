@@ -21,6 +21,7 @@ namespace Tetris
         private IBoard board;
         private Color colour;
         private Point pos;
+        private Color[,] col = new Color[10, 20];
 
         public Block(Color colour, Point pos)
         {
@@ -41,33 +42,36 @@ namespace Tetris
 
         public bool tryMoveLeft()
         {
-            if (Position.Y == 0)
+            if (Position.X <= 0)
                 return false;
-            return true;
+            else
+                return true;
         }
         public bool tryMoveRight()
         {
-            if (Position.Y == board.GetLength(1))
+            if (Position.X >= 10)//board.GetLength(1))
                 return false;
-            return true;
+            else
+                return true;
         }
         public bool tryMoveDown()
         {
-            Color c = board[Position.X, Position.Y];
-            if (c != Color.Black)
+            Color c = board[Position.X, Position.Y+1];
+            if (c != Color.Black & Position.Y <= 20)
                 return true;
-            return false;
+            else
+                return false;
         }
         public void TryRotate(Point offset)
         {
-            
+
         }
 
         public void MoveLeft()
         {
             if (tryMoveLeft())
             {
-                pos.Y -= 1;
+                pos.X -= 1;
             }
         }
 
@@ -75,7 +79,7 @@ namespace Tetris
         {
             if (tryMoveRight())
             {
-                pos.Y += 1;
+                pos.X += 1;
             }
         }
 
@@ -83,14 +87,17 @@ namespace Tetris
         {
             if (tryMoveDown())
             {
-                pos.X -= 1;
+                pos.Y += 1;
             }
         }
 
         public void Rotate(Point offset)
         {
-            pos = new Point(offset.X - pos.X - 1, offset.Y - pos.Y - 1); 
+            pos = new Point(offset.X - pos.X - 1, offset.Y - pos.Y - 1);
         }
-      
+        public override bool Equals(object obj)
+        {
+            return true;//base.Equals(obj);
+        }
     }
 }

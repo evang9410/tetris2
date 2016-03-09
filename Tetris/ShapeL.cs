@@ -9,10 +9,13 @@ namespace Tetris
 {
     public class ShapeL : Shape
     {
-        private Block[][] rotations;
+        private Block[][] rotations = new Block[4][];
         public ShapeL()
             : base()
         {
+            for (int i = 0; i < rotations.Length; i++)
+                rotations[i] = new Block[4];
+
             rotations[0][0] = new Block(Color.Orange, new Point(0, 0));
             rotations[0][1] = new Block(Color.Orange, new Point(0, 1));
             rotations[0][2] = new Block(Color.Orange, new Point(0, 2));
@@ -59,8 +62,8 @@ namespace Tetris
             }
             else if (currentRotation == 3)
             {
-                block = rotations[4];
-                currentRotation = 4;
+                block = rotations[0];
+                currentRotation = 0;
             }
             else
             {
