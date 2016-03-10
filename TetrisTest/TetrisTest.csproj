@@ -59,6 +59,8 @@
     <Compile Include="ShapeZTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShapeJTest.cs" />
+    <Compile Include="ShapeLTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tetris\Tetris.csproj">
