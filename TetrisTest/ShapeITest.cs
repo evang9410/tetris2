@@ -14,13 +14,25 @@ namespace TetrisTest
             ShapeI shapeI = new ShapeI(null);
             ShapeI shapeITest = new ShapeI(null);
             
-            //First rotation
+            // First rotation
+            shapeITest.blocks[0] = new Block(Color.Aquamarine, new Point(0, 0), null);
+            shapeITest.blocks[1] = new Block(Color.Aquamarine, new Point(0, 1), null);
+            shapeITest.blocks[2] = new Block(Color.Aquamarine, new Point(0, 2), null);
+            shapeITest.blocks[3] = new Block(Color.Aquamarine, new Point(0, 3), null);
 
+            for (int i = 0; i < shapeI.blocks.Length; i++)
+            {
+                Assert.AreEqual(shapeITest.blocks[i].Position, shapeI.blocks[i].Position);
+            }
 
-            shapeITest.blocks[0] = new Block(Color.Aquamarine, new Point(0, 0), board);
-            shapeITest.blocks[0] = new Block(Color.Aquamarine, new Point(0, 1), board);
-            shapeITest.blocks[0] = new Block(Color.Aquamarine, new Point(0, 2), board);
-            shapeITest.blocks[0] = new Block(Color.Aquamarine, new Point(0, 3), board);
+            // Rotating
+            shapeI.Rotate();
+
+            // Second rotation
+            shapeITest.blocks[0] = new Block(Color.Aquamarine, new Point(0, 0), null);
+            shapeITest.blocks[1] = new Block(Color.Aquamarine, new Point(1, 0), null);
+            shapeITest.blocks[2] = new Block(Color.Aquamarine, new Point(2, 0), null);
+            shapeITest.blocks[3] = new Block(Color.Aquamarine, new Point(3, 0), null);
 
             for (int i = 0; i < shapeI.blocks.Length; i++)
             {
