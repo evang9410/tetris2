@@ -78,6 +78,10 @@ namespace Tetris
                 if (!b.tryMoveDown())
                     return;
             }
+            foreach (Block b in blocks)
+            {
+                b.MoveDown();
+            }
             
         }
 

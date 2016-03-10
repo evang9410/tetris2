@@ -89,19 +89,20 @@ namespace TetrisTest
         [TestMethod]
         public void Test_MoveRight()
         {
-            ShapeI si = new ShapeI(null);
-            si.blocks[0] = new Block(Color.Aquamarine, new Point(1, 0), null);
-            si.blocks[1] = new Block(Color.Aquamarine, new Point(2, 0), null);
-            si.blocks[2] = new Block(Color.Aquamarine, new Point(3, 0), null);
-            si.blocks[3] = new Block(Color.Aquamarine, new Point(4, 0), null);
+            Board b = new Board(new Color[10, 20], null, null);
+            ShapeI si = new ShapeI(b);
+            si.blocks[0] = new Block(Color.Aquamarine, new Point(1, 0), b);
+            si.blocks[1] = new Block(Color.Aquamarine, new Point(2, 0), b);
+            si.blocks[2] = new Block(Color.Aquamarine, new Point(3, 0), b);
+            si.blocks[3] = new Block(Color.Aquamarine, new Point(4, 0), b);
 
             si.MoveRight();
 
-            ShapeI siE = new ShapeI(null);
-            siE.blocks[0] = new Block(Color.Aquamarine, new Point(2, 0), null);
-            siE.blocks[1] = new Block(Color.Aquamarine, new Point(3, 0), null);
-            siE.blocks[2] = new Block(Color.Aquamarine, new Point(4, 0), null);
-            siE.blocks[3] = new Block(Color.Aquamarine, new Point(5, 0), null);
+            ShapeI siE = new ShapeI(b);
+            siE.blocks[0] = new Block(Color.Aquamarine, new Point(2, 0), b);
+            siE.blocks[1] = new Block(Color.Aquamarine, new Point(3, 0), b);
+            siE.blocks[2] = new Block(Color.Aquamarine, new Point(4, 0), b);
+            siE.blocks[3] = new Block(Color.Aquamarine, new Point(5, 0), b);
 
             for (int i = 0; i < si.blocks.Length; i++)
             {

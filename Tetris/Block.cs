@@ -50,7 +50,7 @@ namespace Tetris
         }
         public bool tryMoveRight()
         {
-            if (Position.X >= 10)//board.GetLength(1))
+            if (Position.X >= board.GetLength(0))
                 return false;
             else
                 return true;
