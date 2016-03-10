@@ -152,50 +152,6 @@ namespace TetrisTest
                 Assert.AreEqual(szE.blocks[i].Position, sz.blocks[i].Position);
             }
         }
-        [TestMethod]
-        public void Test_NoMove_MoveDown()
-        {
-            ShapeZ sz = new ShapeZ(null);
-            sz.blocks[0] = new Block(Color.Aquamarine, new Point(0, 19), null);
-            sz.blocks[1] = new Block(Color.Aquamarine, new Point(1, 19), null);
-            sz.blocks[2] = new Block(Color.Aquamarine, new Point(1, 20), null);
-            sz.blocks[3] = new Block(Color.Aquamarine, new Point(2, 20), null);
-
-            sz.MoveDown();
-
-            ShapeZ szE = new ShapeZ(null);
-            szE.blocks[0] = new Block(Color.Aquamarine, new Point(0, 19), null);
-            szE.blocks[1] = new Block(Color.Aquamarine, new Point(1, 19), null);
-            szE.blocks[2] = new Block(Color.Aquamarine, new Point(1, 20), null);
-            szE.blocks[3] = new Block(Color.Aquamarine, new Point(0, 20), null);
-
-            for (int i = 0; i < sz.blocks.Length; i++)
-            {
-                Assert.AreEqual(szE.blocks[i].Position, sz.blocks[i].Position);
-            }
-        }
-        [TestMethod]
-        public void Test_Drop() //needs access to the board 
-        {
-            ShapeZ sz = new ShapeZ(null);
-            sz.blocks[0] = new Block(Color.Aquamarine, new Point(0, 0), null);
-            sz.blocks[1] = new Block(Color.Aquamarine, new Point(1, 0), null);
-            sz.blocks[2] = new Block(Color.Aquamarine, new Point(1, 1), null);
-            sz.blocks[3] = new Block(Color.Aquamarine, new Point(2, 1), null);
-
-            sz.Drop();
-
-            ShapeZ szE = new ShapeZ(null);
-            szE.blocks[0] = new Block(Color.Aquamarine, new Point(0, 19), null);
-            szE.blocks[1] = new Block(Color.Aquamarine, new Point(1, 19), null);
-            szE.blocks[2] = new Block(Color.Aquamarine, new Point(1, 20), null);
-            szE.blocks[3] = new Block(Color.Aquamarine, new Point(2, 20), null);
-
-            for (int i = 0; i < sz.blocks.Length; i++)
-            {
-                Assert.AreEqual(szE.blocks[i].Position, sz.blocks[i].Position);
-            }
-        }
 
         [TestMethod]
         public void Test_reset() //needs access to the board 

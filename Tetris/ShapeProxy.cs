@@ -13,10 +13,9 @@ namespace Tetris
         private IShape current;
         private IBoard board;
 
-        public ShapeProxy(IBoard board, IShape current)
+        public ShapeProxy(IBoard board)
         {
             this.board = board;
-            this.current = current;
             
         }
 

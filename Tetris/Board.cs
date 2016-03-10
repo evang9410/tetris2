@@ -10,25 +10,23 @@ namespace Tetris
     public class Board: IBoard
     {
         //2-d Arrary position 0,0 top-left, representing x,y
-        private Color[,] board;
+        private Color[,] board = new Color[10, 20];
         private IShape shape;
         private IShapeFactory shapeFactory;
 
-        public Board(Color[,] board, IShape shape, IShapeFactory shapeFactory)
+        public Board()
         {
-            this.board = board;
             for (int x = 0; x < board.GetLength(0); x++)
             {
                 for (int y = 0; y < board.GetLength(1); y++)
                 {
-                    this.board[x, y] = Color.Black;
+                    board[x, y] = Color.Black;
                 }
             }
-            this.shape = shape;
-
-            this.shape.JoinPile += addToPile;
-            this.shapeFactory = shapeFactory;
+            shapeFactory = new ShapeProxy(this);
+            shape = (IShape)shapeFactory;
         }
+
 
 
         public event LinesClearedHandler LinesCleared;

@@ -87,13 +87,25 @@ namespace Tetris
 
         public void Drop() 
         {
-            for(int i = 0; i <block.Length;i++)
+            bool movedown = true;
+
+            foreach (Block b in blocks)
             {
-                while (block[i].tryMoveDown())
+                if (!b.tryMoveDown())
                 {
-                    block[i].MoveDown();
+                    movedown = false;
                 }
-            } 
+            }
+
+            if (movedown)
+            {
+                foreach (Block b in blocks)
+                {
+                    b.MoveDown();
+                }
+
+                this.Drop();
+            }
         }
 
         public abstract void Rotate();

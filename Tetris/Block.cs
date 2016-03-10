@@ -57,8 +57,14 @@ namespace Tetris
         }
         public bool tryMoveDown()
         {
-            Color c = board[Position.X, Position.Y+1];
-            if (c != Color.Black & Position.Y <= 20)
+            if (Position.Y >= 19)
+            {
+                return false;
+            }
+
+            Color blockUnder = board[Position.X, Position.Y + 1];
+
+            if (blockUnder == Color.Black)
                 return true;
             else
                 return false;
