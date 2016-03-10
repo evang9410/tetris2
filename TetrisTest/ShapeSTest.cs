@@ -64,7 +64,7 @@ namespace TetrisTest
         {
             ShapeS ss = new ShapeS(null);
             ss.blocks[0] = new Block(Color.Aquamarine, new Point(9, 0), null);
-            ss.blocks[1] = new Block(Color.Aquamarine, new Point(1, 0), null);
+            ss.blocks[1] = new Block(Color.Aquamarine, new Point(10, 0), null);
             ss.blocks[2] = new Block(Color.Aquamarine, new Point(8, 1), null);
             ss.blocks[3] = new Block(Color.Aquamarine, new Point(9, 1), null);
 
@@ -90,13 +90,13 @@ namespace TetrisTest
             ss.blocks[2] = new Block(Color.Aquamarine, new Point(0, 1), null);
             ss.blocks[3] = new Block(Color.Aquamarine, new Point(1, 1), null);
 
-            ss.MoveLeft();
+            ss.MoveRight();
 
             ShapeS ssE = new ShapeS(null);
-            ss.blocks[0] = new Block(Color.Aquamarine, new Point(2, 0), null);
-            ss.blocks[1] = new Block(Color.Aquamarine, new Point(3, 0), null);
-            ss.blocks[2] = new Block(Color.Aquamarine, new Point(1, 1), null);
-            ss.blocks[3] = new Block(Color.Aquamarine, new Point(2, 1), null);
+            ssE.blocks[0] = new Block(Color.Aquamarine, new Point(2, 0), null);
+            ssE.blocks[1] = new Block(Color.Aquamarine, new Point(3, 0), null);
+            ssE.blocks[2] = new Block(Color.Aquamarine, new Point(1, 1), null);
+            ssE.blocks[3] = new Block(Color.Aquamarine, new Point(2, 1), null);
 
             for (int i = 0; i < ss.blocks.Length; i++)
             {
@@ -175,7 +175,7 @@ namespace TetrisTest
         {
             ShapeS ss = new ShapeS(null);
             ss.blocks[0] = new Block(Color.Aquamarine, new Point(1, 0), null);
-            ss.blocks[1] = new Block(Color.Aquamarine, new Point(1, 0), null);
+            ss.blocks[1] = new Block(Color.Aquamarine, new Point(2, 0), null);
             ss.blocks[2] = new Block(Color.Aquamarine, new Point(0, 1), null);
             ss.blocks[3] = new Block(Color.Aquamarine, new Point(1, 1), null);
 

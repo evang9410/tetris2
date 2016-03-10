@@ -96,7 +96,7 @@ namespace TetrisTest
             szE.blocks[0] = new Block(Color.Aquamarine, new Point(8, 0), null);
             szE.blocks[1] = new Block(Color.Aquamarine, new Point(9, 0), null);
             szE.blocks[2] = new Block(Color.Aquamarine, new Point(9, 1), null);
-            szE.blocks[3] = new Block(Color.Aquamarine, new Point(10, 0), null);
+            szE.blocks[3] = new Block(Color.Aquamarine, new Point(10, 1), null);
 
             for (int i = 0; i < sz.blocks.Length; i++)
             {
