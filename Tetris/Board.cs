@@ -104,7 +104,8 @@ namespace Tetris
                     {
                         board[x, y] = Color.Black;
                     }
-                    else 
+                    else
+                        //unsure if its x - 1 or y - 1
                         board[x, y] = board[x - 1, y];
                 }
             }
