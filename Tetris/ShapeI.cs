@@ -10,21 +10,21 @@ namespace Tetris
     public class ShapeI : Shape
     {
         private Block[][] rotations = new Block[2][];
-        public ShapeI()
-            : base()
+        public ShapeI(IBoard board)
+            : base(board)
         {
             for(int i = 0 ; i < 2; i++)
                 rotations[i] = new Block[4];
-            
-            rotations[0][0] = new Block(Color.Aquamarine, new Point(0, 0));
-            rotations[0][1] = new Block(Color.Aquamarine, new Point(0, 1));
-            rotations[0][2] = new Block(Color.Aquamarine, new Point(0, 2));
-            rotations[0][3] = new Block(Color.Aquamarine, new Point(0, 3));
 
-            rotations[1][0] = new Block(Color.Aquamarine, new Point(0, 0));
-            rotations[1][1] = new Block(Color.Aquamarine, new Point(1, 0));
-            rotations[1][2] = new Block(Color.Aquamarine, new Point(2, 0));
-            rotations[1][3] = new Block(Color.Aquamarine, new Point(3, 0));
+            rotations[0][0] = new Block(Color.Aquamarine, new Point(0, 0), board);
+            rotations[0][1] = new Block(Color.Aquamarine, new Point(0, 1), board);
+            rotations[0][2] = new Block(Color.Aquamarine, new Point(0, 2), board);
+            rotations[0][3] = new Block(Color.Aquamarine, new Point(0, 3), board);
+
+            rotations[1][0] = new Block(Color.Aquamarine, new Point(0, 0), board);
+            rotations[1][1] = new Block(Color.Aquamarine, new Point(1, 0), board);
+            rotations[1][2] = new Block(Color.Aquamarine, new Point(2, 0), board);
+            rotations[1][3] = new Block(Color.Aquamarine, new Point(3, 0), board);
 
             block = rotations[0];
         }

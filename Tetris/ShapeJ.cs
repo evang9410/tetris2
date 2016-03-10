@@ -10,30 +10,31 @@ namespace Tetris
     public class ShapeJ : Shape
     {
         private Block[][] rotations = new Block[4][];
-        public ShapeJ(): base()
+        private IBoard board;
+        public ShapeJ(IBoard board): base(board)
         {
             for (int i = 0; i < rotations.Length; i++)
                 rotations[i] = new Block[4];
 
-            rotations[0][0] = new Block(Color.HotPink, new Point(1, 0));
-            rotations[0][1] = new Block(Color.HotPink, new Point(1, 1));
-            rotations[0][2] = new Block(Color.HotPink, new Point(1, 2));
-            rotations[0][3] = new Block(Color.HotPink, new Point(0, 2));
+            rotations[0][0] = new Block(Color.HotPink, new Point(1, 0), board);
+            rotations[0][1] = new Block(Color.HotPink, new Point(1, 1), board);
+            rotations[0][2] = new Block(Color.HotPink, new Point(1, 2), board);
+            rotations[0][3] = new Block(Color.HotPink, new Point(0, 2), board);
 
-            rotations[1][0] = new Block(Color.HotPink, new Point(0, 1));
-            rotations[1][1] = new Block(Color.HotPink, new Point(0, 2));
-            rotations[1][2] = new Block(Color.HotPink, new Point(1, 2));
-            rotations[1][3] = new Block(Color.HotPink, new Point(2, 2));
+            rotations[1][0] = new Block(Color.HotPink, new Point(0, 1), board);
+            rotations[1][1] = new Block(Color.HotPink, new Point(0, 2), board);
+            rotations[1][2] = new Block(Color.HotPink, new Point(1, 2),board);
+            rotations[1][3] = new Block(Color.HotPink, new Point(2, 2),board);
 
-            rotations[2][0] = new Block(Color.HotPink, new Point(0, 0));
-            rotations[2][1] = new Block(Color.HotPink, new Point(1, 0));
-            rotations[2][2] = new Block(Color.HotPink, new Point(0, 1));
-            rotations[2][3] = new Block(Color.HotPink, new Point(0, 2));
+            rotations[2][0] = new Block(Color.HotPink, new Point(0, 0), board);
+            rotations[2][1] = new Block(Color.HotPink, new Point(1, 0), board);
+            rotations[2][2] = new Block(Color.HotPink, new Point(0, 1), board);
+            rotations[2][3] = new Block(Color.HotPink, new Point(0, 2), board);
 
-            rotations[3][0] = new Block(Color.HotPink, new Point(0, 0));
-            rotations[3][1] = new Block(Color.HotPink, new Point(1, 0));
-            rotations[3][2] = new Block(Color.HotPink, new Point(2, 0));
-            rotations[3][3] = new Block(Color.HotPink, new Point(2, 1));
+            rotations[3][0] = new Block(Color.HotPink, new Point(0, 0), board);
+            rotations[3][1] = new Block(Color.HotPink, new Point(1, 0), board);
+            rotations[3][2] = new Block(Color.HotPink, new Point(2, 0), board);
+            rotations[3][3] = new Block(Color.HotPink, new Point(2, 1), board);
 
             block = rotations[0];
         }

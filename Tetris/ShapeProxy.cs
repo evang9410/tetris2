@@ -27,31 +27,31 @@ namespace Tetris
             switch (shape)
             {
                 case 0: 
-                    current = new ShapeI();
+                    current = new ShapeI(board);
                     onJoinPile(current);
                     break;
                 case 1:
-                    current = new ShapeJ();
+                    current = new ShapeJ(board);
                     onJoinPile(current);
                     break;
                 case 2:
-                    current = new ShapeL();
+                    current = new ShapeL(board);
                     onJoinPile(current);
                     break;
                 case 3:
-                    current = new ShapeO();
+                    current = new ShapeO(board);
                     onJoinPile(current);
                     break;
                 case 4:
-                    current = new ShapeS();
+                    current = new ShapeS(board);
                     onJoinPile(current);
                     break;
                 case 5:
-                    current = new ShapeT();
+                    current = new ShapeT(board);
                     onJoinPile(current);
                     break;
                 case 6:
-                    current = new ShapeZ();
+                    current = new ShapeZ(board);
                     onJoinPile(current);
                     break;
             }

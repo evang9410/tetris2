@@ -23,8 +23,9 @@ namespace Tetris
         private Point pos;
         private Color[,] col = new Color[10, 20];
 
-        public Block(Color colour, Point pos)
+        public Block(Color colour, Point pos, IBoard board)
         {
+            this.board = board;
             this.colour = colour;
             this.pos = pos;
         }

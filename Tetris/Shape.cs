@@ -13,8 +13,9 @@ namespace Tetris
         protected Block[] block;
         protected Point[,] rotationOffset;
         protected int currentRotation;
-        public Shape()
+        public Shape(IBoard board)
         {
+            this.board = board;
             block = new Block[4];
             currentRotation = 0;
         }

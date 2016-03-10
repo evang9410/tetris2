@@ -54,9 +54,9 @@
   <ItemGroup>
     <Compile Include="ScoreTest.cs" />
     <Compile Include="ShapeITest.cs" />
-    <Compile Include="TestShapeO.cs" />
-    <Compile Include="TestShapeS.cs" />
-    <Compile Include="TestShapeZ.cs" />
+    <Compile Include="ShapeOTest.cs" />
+    <Compile Include="ShapeSTest.cs" />
+    <Compile Include="ShapeZTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
