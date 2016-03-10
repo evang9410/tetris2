@@ -11,7 +11,34 @@ namespace TetrisTest
         [TestMethod]
         public void Test_Rotations()
         {
+            // Init
+            ShapeS shapeS = new ShapeS(null);
+            ShapeS shapeSTest = new ShapeS(null);
 
+            // First rotation
+            shapeSTest.blocks[0] = new Block(Color.Tomato, new Point(0, 1), null);
+            shapeSTest.blocks[1] = new Block(Color.Tomato, new Point(1, 1), null);
+            shapeSTest.blocks[2] = new Block(Color.Tomato, new Point(1, 0), null);
+            shapeSTest.blocks[3] = new Block(Color.Tomato, new Point(2, 0), null);
+
+            for (int i = 0; i < shapeS.blocks.Length; i++)
+            {
+                Assert.AreEqual(shapeSTest.blocks[i].Position, shapeS.blocks[i].Position);
+            }
+
+            // Rotating
+            shapeS.Rotate();
+
+            // Second rotation
+            shapeSTest.blocks[0] = new Block(Color.Tomato, new Point(0, 0), null);
+            shapeSTest.blocks[1] = new Block(Color.Tomato, new Point(0, 1), null);
+            shapeSTest.blocks[2] = new Block(Color.Tomato, new Point(1, 1), null);
+            shapeSTest.blocks[3] = new Block(Color.Tomato, new Point(1, 2), null);
+
+            for (int i = 0; i < shapeS.blocks.Length; i++)
+            {
+                Assert.AreEqual(shapeSTest.blocks[i].Position, shapeS.blocks[i].Position);
+            }
         }
 
         [TestMethod]

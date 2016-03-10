@@ -17,25 +17,22 @@ namespace TetrisTest
         [TestMethod]
         public void Test_NoMove_MoveLeft()
         {
-            ShapeO so = new ShapeO(null);
-            so.blocks[0] = new Block(Color.Aquamarine, new Point(0, 0), null);
-            so.blocks[1] = new Block(Color.Aquamarine, new Point(1, 0), null);
-            so.blocks[2] = new Block(Color.Aquamarine, new Point(0, 1), null);
-            so.blocks[3] = new Block(Color.Aquamarine, new Point(1, 1), null);
+            // Init
+            ShapeO shapeO = new ShapeO(null);
+            ShapeO shapeOTest = new ShapeO(null);
 
-            so.MoveLeft();
+            // First rotation
+            shapeOTest.blocks[0] = new Block(Color.Yellow, new Point(0, 0), null);
+            shapeOTest.blocks[1] = new Block(Color.Yellow, new Point(1, 0), null);
+            shapeOTest.blocks[2] = new Block(Color.Yellow, new Point(0, 1), null);
+            shapeOTest.blocks[3] = new Block(Color.Yellow, new Point(1, 1), null);
 
-            ShapeO soE = new ShapeO(null);
-            soE.blocks[0] = new Block(Color.Aquamarine, new Point(0, 0), null);
-            soE.blocks[1] = new Block(Color.Aquamarine, new Point(1, 0), null);
-            soE.blocks[2] = new Block(Color.Aquamarine, new Point(0, 1), null);
-            soE.blocks[3] = new Block(Color.Aquamarine, new Point(1, 1), null);
-
-            for (int i = 0; i < so.blocks.Length; i++)
+            for (int i = 0; i < shapeO.blocks.Length; i++)
             {
-                Assert.AreEqual(soE.blocks[i].Position, so.blocks[i].Position);
+                Assert.AreEqual(shapeOTest.blocks[i].Position, shapeO.blocks[i].Position);
             }
         }
+
         [TestMethod]
         public void Test_MoveLeft()
         {

@@ -17,7 +17,7 @@ namespace Tetris
             for (int i = 0; i < rotations.Length; i++)
                 rotations[i] = new Block[4];
 
-            rotations[0][0] = new Block(Color.Purple, new Point(0, 0),board);
+            rotations[0][0] = new Block(Color.Purple, new Point(0, 0), board);
             rotations[0][1] = new Block(Color.Purple, new Point(1, 0), board);
             rotations[0][2] = new Block(Color.Purple, new Point(2, 0), board);
             rotations[0][3] = new Block(Color.Purple, new Point(1, 1), board);
@@ -28,8 +28,8 @@ namespace Tetris
             rotations[1][3] = new Block(Color.Purple, new Point(1, 2), board);
 
             rotations[2][0] = new Block(Color.Purple, new Point(1, 0), board);
-            rotations[2][1] = new Block(Color.Purple, new Point(0, 1),board);
-            rotations[2][2] = new Block(Color.Purple, new Point(1, 1),board);
+            rotations[2][1] = new Block(Color.Purple, new Point(0, 1), board);
+            rotations[2][2] = new Block(Color.Purple, new Point(1, 1), board);
             rotations[2][3] = new Block(Color.Purple, new Point(2, 1), board);
 
             rotations[3][0] = new Block(Color.Purple, new Point(0, 0), board);
