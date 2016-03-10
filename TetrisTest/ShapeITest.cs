@@ -8,7 +8,7 @@ namespace TetrisTest
     public class ShapeITest
     {
         [TestMethod]
-        public void Test_Rotate1()
+        public void Test_Rotate()
         {
             ShapeI shapeI = new ShapeI();
             //First rotate
