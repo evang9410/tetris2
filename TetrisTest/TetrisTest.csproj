@@ -53,6 +53,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ScoreTest.cs" />
+    <Compile Include="Score_Test.cs" />
     <Compile Include="ShapeITest.cs" />
     <Compile Include="ShapeOTest.cs" />
     <Compile Include="ShapeSTest.cs" />

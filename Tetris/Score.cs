@@ -11,12 +11,10 @@ namespace Tetris
         private int level;
         private int lines;
         private int scores;
-        Board tetrisBoard;
 
         public Score(Board board)
-        {
-            this.tetrisBoard = board;
-            tetrisBoard.LinesCleared += incrementLinesCleared;
+        {    
+            board.LinesCleared += incrementLinesCleared;
         }
         public int Level
         {
@@ -31,7 +29,7 @@ namespace Tetris
             get { return scores; }
         }
 
-        private void incrementLinesCleared(int num)
+        public void incrementLinesCleared(int num)
         {
             lines += num;
             scores += num * num;

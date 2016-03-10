@@ -25,6 +25,8 @@ namespace Tetris
             }
             shapeFactory = new ShapeProxy(this);
             shape = (IShape)shapeFactory;
+
+            shape.JoinPile += addToPile;
         }
 
 
@@ -32,8 +34,7 @@ namespace Tetris
         public event LinesClearedHandler LinesCleared;
 
         protected virtual void onLinesCleared(int lines)
-        {
-
+        {    
             if (LinesCleared != null)
                 LinesCleared(lines);
         }
@@ -59,7 +60,7 @@ namespace Tetris
             
         }
 
-       public int linesToClear()
+        private int linesToClear()
         {
            //call method that adds current shape to board
             addToPile(shape);
@@ -121,14 +122,15 @@ namespace Tetris
 
         private void addToPile(IShape shape)
         {
-            int offset = board.GetLength(1) / 2;
+            int offsetX = board.GetLength(0) / 2;
+            int offsetY = board.GetLength(1) / 2;
             bool placeable = true;
 
             for(int i = 0; i < shape.Length; i++)
             {
-                shape[i].Position = new Point(shape[i].Position.X + offset, shape[i].Position.Y);
+                shape[i].Position = new Point(shape[i].Position.X + offsetX, shape[i].Position.Y + offsetY);
 
-                if (!board[shape[i].Position.X, shape[i].Position.Y].Equals(Color.Black))
+                if (!board[shape[i].Position.X + offsetX, shape[i].Position.Y + offsetY].Equals(Color.Black))
                 {
                     placeable = false;
                     this.GameOver(!placeable);
@@ -137,6 +139,7 @@ namespace Tetris
 
             if (placeable)
             {
+                linesToClear();
                 this.shape = shape;
                 this.shape.JoinPile += addToPile; 
             }
