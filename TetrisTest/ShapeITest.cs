@@ -12,51 +12,55 @@ namespace TetrisTest
         public void Test_Rotations()
         {
             // Init
-            ShapeI shapeI = new ShapeI(null);
-            ShapeI shapeITest = new ShapeI(null);
+            IBoard board = new Board();
+            ShapeI si = new ShapeI(board);
+            ShapeI siE = new ShapeI(board);
             
             // First rotation
-            shapeITest.blocks[0] = new Block(Color.Aquamarine, new Point(0, 0), null);
-            shapeITest.blocks[1] = new Block(Color.Aquamarine, new Point(0, 1), null);
-            shapeITest.blocks[2] = new Block(Color.Aquamarine, new Point(0, 2), null);
-            shapeITest.blocks[3] = new Block(Color.Aquamarine, new Point(0, 3), null);
+            siE.blocks[0] = new Block(Color.Aquamarine, new Point(0, 0), board);
+            siE.blocks[1] = new Block(Color.Aquamarine, new Point(0, 1), board);
+            siE.blocks[2] = new Block(Color.Aquamarine, new Point(0, 2), board);
+            siE.blocks[3] = new Block(Color.Aquamarine, new Point(0, 3), board);
 
-            for (int i = 0; i < shapeI.blocks.Length; i++)
+            for (int i = 0; i < si.blocks.Length; i++)
             {
-                Assert.AreEqual(shapeITest.blocks[i].Position, shapeI.blocks[i].Position);
+                Assert.AreEqual(siE.blocks[i].Position, si.blocks[i].Position);
             }
 
             // Rotating
-            shapeI.Rotate();
+            si.Rotate();
 
             // Second rotation
-            shapeITest.blocks[0] = new Block(Color.Aquamarine, new Point(0, 0), null);
-            shapeITest.blocks[1] = new Block(Color.Aquamarine, new Point(1, 0), null);
-            shapeITest.blocks[2] = new Block(Color.Aquamarine, new Point(2, 0), null);
-            shapeITest.blocks[3] = new Block(Color.Aquamarine, new Point(3, 0), null);
+            siE.blocks[0] = new Block(Color.Aquamarine, new Point(0, 0), board);
+            siE.blocks[1] = new Block(Color.Aquamarine, new Point(1, 0), board);
+            siE.blocks[2] = new Block(Color.Aquamarine, new Point(2, 0), board);
+            siE.blocks[3] = new Block(Color.Aquamarine, new Point(3, 0), board);
 
-            for (int i = 0; i < shapeI.blocks.Length; i++)
+            for (int i = 0; i < si.blocks.Length; i++)
             {
-                Assert.AreEqual(shapeITest.blocks[i].Position, shapeI.blocks[i].Position);
+                Assert.AreEqual(siE.blocks[i].Position, si.blocks[i].Position);
             }
         }
 
         [TestMethod]
         public void Test_NoMove_MoveLeft()
         {
-            ShapeI si = new ShapeI(null);
-            si.blocks[0] = new Block(Color.Aquamarine, new Point(0, 0), null);
-            si.blocks[1] = new Block(Color.Aquamarine, new Point(1, 0), null);
-            si.blocks[2] = new Block(Color.Aquamarine, new Point(2, 0), null);
-            si.blocks[3] = new Block(Color.Aquamarine, new Point(3, 0), null);
+            // Init
+            IBoard board = new Board();
+            ShapeI si = new ShapeI(board);
+            ShapeI siE = new ShapeI(board);
+
+            si.blocks[0] = new Block(Color.Aquamarine, new Point(0, 0), board);
+            si.blocks[1] = new Block(Color.Aquamarine, new Point(1, 0), board);
+            si.blocks[2] = new Block(Color.Aquamarine, new Point(2, 0), board);
+            si.blocks[3] = new Block(Color.Aquamarine, new Point(3, 0), board);
 
             si.MoveLeft();
 
-            ShapeI siE = new ShapeI(null);
-            siE.blocks[0] = new Block(Color.Aquamarine, new Point(0, 0), null);
-            siE.blocks[1] = new Block(Color.Aquamarine, new Point(1, 0), null);
-            siE.blocks[2] = new Block(Color.Aquamarine, new Point(2, 0), null);
-            siE.blocks[3] = new Block(Color.Aquamarine, new Point(3, 0), null);
+            siE.blocks[0] = new Block(Color.Aquamarine, new Point(0, 0), board);
+            siE.blocks[1] = new Block(Color.Aquamarine, new Point(1, 0), board);
+            siE.blocks[2] = new Block(Color.Aquamarine, new Point(2, 0), board);
+            siE.blocks[3] = new Block(Color.Aquamarine, new Point(3, 0), board);
 
             for (int i = 0; i < si.blocks.Length; i++)
             {
@@ -66,19 +70,22 @@ namespace TetrisTest
         [TestMethod]
         public void Test_MoveLeft()
         {
-            ShapeI si = new ShapeI(null);
-            si.blocks[0] = new Block(Color.Aquamarine, new Point(1, 0), null);
-            si.blocks[1] = new Block(Color.Aquamarine, new Point(2, 0), null);
-            si.blocks[2] = new Block(Color.Aquamarine, new Point(3, 0), null);
-            si.blocks[3] = new Block(Color.Aquamarine, new Point(4, 0), null);
+            // Init
+            IBoard board = new Board();
+            ShapeI si = new ShapeI(board);
+            ShapeI siE = new ShapeI(board);
+
+            si.blocks[0] = new Block(Color.Aquamarine, new Point(1, 0), board);
+            si.blocks[1] = new Block(Color.Aquamarine, new Point(2, 0), board);
+            si.blocks[2] = new Block(Color.Aquamarine, new Point(3, 0), board);
+            si.blocks[3] = new Block(Color.Aquamarine, new Point(4, 0), board);
 
             si.MoveLeft();
 
-            ShapeI siE = new ShapeI(null);
-            siE.blocks[0] = new Block(Color.Aquamarine, new Point(0, 0), null);
-            siE.blocks[1] = new Block(Color.Aquamarine, new Point(1, 0), null);
-            siE.blocks[2] = new Block(Color.Aquamarine, new Point(2, 0), null);
-            siE.blocks[3] = new Block(Color.Aquamarine, new Point(3, 0), null);
+            siE.blocks[0] = new Block(Color.Aquamarine, new Point(0, 0), board);
+            siE.blocks[1] = new Block(Color.Aquamarine, new Point(1, 0), board);
+            siE.blocks[2] = new Block(Color.Aquamarine, new Point(2, 0), board);
+            siE.blocks[3] = new Block(Color.Aquamarine, new Point(3, 0), board);
 
             for (int i = 0; i < si.blocks.Length; i++)
             {
@@ -90,20 +97,23 @@ namespace TetrisTest
         [TestMethod]
         public void Test_MoveRight()
         {
-            
-            ShapeI si = new ShapeI(null);
-            si.blocks[0] = new Block(Color.Aquamarine, new Point(1, 0), null);
-            si.blocks[1] = new Block(Color.Aquamarine, new Point(2, 0), null);
-            si.blocks[2] = new Block(Color.Aquamarine, new Point(3, 0), null);
-            si.blocks[3] = new Block(Color.Aquamarine, new Point(4, 0), null);
+
+            // Init
+            IBoard board = new Board();
+            ShapeI si = new ShapeI(board);
+            ShapeI siE = new ShapeI(board);
+
+            si.blocks[0] = new Block(Color.Aquamarine, new Point(1, 0), board);
+            si.blocks[1] = new Block(Color.Aquamarine, new Point(2, 0), board);
+            si.blocks[2] = new Block(Color.Aquamarine, new Point(3, 0), board);
+            si.blocks[3] = new Block(Color.Aquamarine, new Point(4, 0), board);
 
             si.MoveRight();
 
-            ShapeI siE = new ShapeI(null);
-            siE.blocks[0] = new Block(Color.Aquamarine, new Point(2, 0), null);
-            siE.blocks[1] = new Block(Color.Aquamarine, new Point(3, 0), null);
-            siE.blocks[2] = new Block(Color.Aquamarine, new Point(4, 0), null);
-            siE.blocks[3] = new Block(Color.Aquamarine, new Point(5, 0), null);
+            siE.blocks[0] = new Block(Color.Aquamarine, new Point(2, 0), board);
+            siE.blocks[1] = new Block(Color.Aquamarine, new Point(3, 0), board);
+            siE.blocks[2] = new Block(Color.Aquamarine, new Point(4, 0), board);
+            siE.blocks[3] = new Block(Color.Aquamarine, new Point(5, 0), board);
 
             for (int i = 0; i < si.blocks.Length; i++)
             {
@@ -114,29 +124,37 @@ namespace TetrisTest
         [TestMethod]
         public void Test_NoMove_moveright()
         {
-            ShapeI si = new ShapeI(null);
-            si.blocks[0] = new Block(Color.Aquamarine, new Point(7, 0), null);
-            si.blocks[1] = new Block(Color.Aquamarine, new Point(8, 0), null);
-            si.blocks[2] = new Block(Color.Aquamarine, new Point(9, 0), null);
-            si.blocks[3] = new Block(Color.Aquamarine, new Point(10, 0), null);
+            // Init
+            IBoard board = new Board();
+            ShapeI si = new ShapeI(board);
+            ShapeI siE = new ShapeI(board);
+
+            si.blocks[0] = new Block(Color.Aquamarine, new Point(7, 0), board);
+            si.blocks[1] = new Block(Color.Aquamarine, new Point(8, 0), board);
+            si.blocks[2] = new Block(Color.Aquamarine, new Point(9, 0), board);
+            si.blocks[3] = new Block(Color.Aquamarine, new Point(10, 0), board);
 
             si.MoveRight();
 
-            ShapeI siE = new ShapeI(null);
-            siE.blocks[0] = new Block(Color.Aquamarine, new Point(7, 0), null);
-            siE.blocks[1] = new Block(Color.Aquamarine, new Point(8, 0), null);
-            siE.blocks[2] = new Block(Color.Aquamarine, new Point(9, 0), null);
-            siE.blocks[3] = new Block(Color.Aquamarine, new Point(10, 0), null);
-            
-            Assert.AreEqual(siE.blocks[3].Position, si.blocks[3].Position);
+            siE.blocks[0] = new Block(Color.Aquamarine, new Point(7, 0), board);
+            siE.blocks[1] = new Block(Color.Aquamarine, new Point(8, 0), board);
+            siE.blocks[2] = new Block(Color.Aquamarine, new Point(9, 0), board);
+            siE.blocks[3] = new Block(Color.Aquamarine, new Point(10, 0), board);
+
+            for (int i = 0; i < si.blocks.Length; i++)
+            {
+                Assert.AreEqual(siE.blocks[i].Position, si.blocks[i].Position);
+            }
             
         }
 
         [TestMethod]
         public void Test_MoveDown()
         {
+            // Init
             IBoard board = new Board();
             ShapeI si = new ShapeI(board);
+            ShapeI siE = new ShapeI(board);
 
             si.blocks[0] = new Block(Color.Aquamarine, new Point(1, 0), board);
             si.blocks[1] = new Block(Color.Aquamarine, new Point(2, 0), board);
@@ -145,7 +163,6 @@ namespace TetrisTest
 
             si.MoveDown();
 
-            ShapeI siE = new ShapeI(board);
             siE.blocks[0] = new Block(Color.Aquamarine, new Point(1, 1), board);
             siE.blocks[1] = new Block(Color.Aquamarine, new Point(2, 1), board);
             siE.blocks[2] = new Block(Color.Aquamarine, new Point(3, 1), board);
@@ -159,8 +176,10 @@ namespace TetrisTest
         [TestMethod]
         public void Test_NoMove_MoveDown()
         {
+            // Init
             IBoard board = new Board();
             ShapeI si = new ShapeI(board);
+            ShapeI siE = new ShapeI(board);
 
             si.blocks[0] = new Block(Color.Aquamarine, new Point(1, 19), board);
             si.blocks[1] = new Block(Color.Aquamarine, new Point(2, 19), board);
@@ -169,7 +188,6 @@ namespace TetrisTest
 
             si.MoveDown();
 
-            ShapeI siE = new ShapeI(board);
             siE.blocks[0] = new Block(Color.Aquamarine, new Point(1, 19), board);
             siE.blocks[1] = new Block(Color.Aquamarine, new Point(2, 19), board);
             siE.blocks[2] = new Block(Color.Aquamarine, new Point(3, 19), board);
@@ -183,8 +201,11 @@ namespace TetrisTest
         [TestMethod]
         public void Test_Drop() //needs access to the board 
         {
+            // Init
             IBoard board = new Board();
             ShapeI si = new ShapeI(board);
+            ShapeI siE = new ShapeI(board);
+
             si.blocks[0] = new Block(Color.Aquamarine, new Point(0, 0), board);
             si.blocks[1] = new Block(Color.Aquamarine, new Point(1, 0), board);
             si.blocks[2] = new Block(Color.Aquamarine, new Point(2, 0), board);
@@ -192,7 +213,6 @@ namespace TetrisTest
 
             si.Drop();
 
-            ShapeI siE = new ShapeI(board);
             siE.blocks[0] = new Block(Color.Aquamarine, new Point(0, 19), board);
             siE.blocks[1] = new Block(Color.Aquamarine, new Point(1, 19), board);
             siE.blocks[2] = new Block(Color.Aquamarine, new Point(2, 19), board);
@@ -207,25 +227,18 @@ namespace TetrisTest
         [TestMethod]
         public void Test_reset() //needs access to the board 
         {
-            ShapeI si = new ShapeI(null);
-            si.blocks[0] = new Block(Color.Aquamarine, new Point(0, 0), null);
-            si.blocks[1] = new Block(Color.Aquamarine, new Point(1, 0), null);
-            si.blocks[2] = new Block(Color.Aquamarine, new Point(2, 0), null);
-            si.blocks[3] = new Block(Color.Aquamarine, new Point(3, 0), null);
+            // Init
+            IBoard board = new Board();
+            ShapeI si = new ShapeI(board);
+            ShapeI siE = new ShapeI(board);
 
+            si.Rotate();
             si.Reset();
-
-            ShapeI siE = new ShapeI(null);
-            siE.blocks[0] = new Block(Color.Aquamarine, new Point(0, 0), null);
-            siE.blocks[1] = new Block(Color.Aquamarine, new Point(1, 0), null);
-            siE.blocks[2] = new Block(Color.Aquamarine, new Point(2, 0), null);
-            siE.blocks[3] = new Block(Color.Aquamarine, new Point(3, 0), null);
 
             for (int i = 0; i < si.blocks.Length; i++)
             {
                 Assert.AreEqual(siE.blocks[i].Position, si.blocks[i].Position);
             }
         }
-        
     }
 }

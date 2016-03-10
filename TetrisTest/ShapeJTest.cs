@@ -12,60 +12,78 @@ namespace TetrisTest
         public void Test_Rotations()
         {
             // Init
-            ShapeJ shapeJ = new ShapeJ(null);
-            ShapeJ shapeJTest = new ShapeJ(null);
+            IBoard board = new Board();
+            ShapeJ sj = new ShapeJ(board);
+            ShapeJ sjE = new ShapeJ(board);
             
             // First rotation
-            shapeJTest.blocks[0] = new Block(Color.HotPink, new Point(1, 0), null);
-            shapeJTest.blocks[1] = new Block(Color.HotPink, new Point(1, 1), null);
-            shapeJTest.blocks[2] = new Block(Color.HotPink, new Point(1, 2), null);
-            shapeJTest.blocks[3] = new Block(Color.HotPink, new Point(0, 2), null);
+            sjE.blocks[0] = new Block(Color.HotPink, new Point(1, 0), board);
+            sjE.blocks[1] = new Block(Color.HotPink, new Point(1, 1), board);
+            sjE.blocks[2] = new Block(Color.HotPink, new Point(1, 2), board);
+            sjE.blocks[3] = new Block(Color.HotPink, new Point(0, 2), board);
 
-            for (int i = 0; i < shapeJ.blocks.Length; i++)
+            for (int i = 0; i < sj.blocks.Length; i++)
             {
-                Assert.AreEqual(shapeJTest.blocks[i].Position, shapeJ.blocks[i].Position);
+                Assert.AreEqual(sjE.blocks[i].Position, sj.blocks[i].Position);
             }
 
             // Rotating
-            shapeJ.Rotate();
+            sj.Rotate();
 
             // Second rotation
-            shapeJTest.blocks[0] = new Block(Color.HotPink, new Point(0, 1), null);
-            shapeJTest.blocks[1] = new Block(Color.HotPink, new Point(0, 2), null);
-            shapeJTest.blocks[2] = new Block(Color.HotPink, new Point(1, 2), null);
-            shapeJTest.blocks[3] = new Block(Color.HotPink, new Point(2, 2), null);
+            sjE.blocks[0] = new Block(Color.HotPink, new Point(0, 1), board);
+            sjE.blocks[1] = new Block(Color.HotPink, new Point(0, 2), board);
+            sjE.blocks[2] = new Block(Color.HotPink, new Point(1, 2), board);
+            sjE.blocks[3] = new Block(Color.HotPink, new Point(2, 2), board);
 
-            for (int i = 0; i < shapeJ.blocks.Length; i++)
+            for (int i = 0; i < sj.blocks.Length; i++)
             {
-                Assert.AreEqual(shapeJTest.blocks[i].Position, shapeJ.blocks[i].Position);
+                Assert.AreEqual(sjE.blocks[i].Position, sj.blocks[i].Position);
             }
 
             // Rotating
-            shapeJ.Rotate();
+            sj.Rotate();
 
             // Third rotation
-            shapeJTest.blocks[0] = new Block(Color.HotPink, new Point(0, 0), null);
-            shapeJTest.blocks[1] = new Block(Color.HotPink, new Point(1, 0), null);
-            shapeJTest.blocks[2] = new Block(Color.HotPink, new Point(0, 1), null);
-            shapeJTest.blocks[3] = new Block(Color.HotPink, new Point(0, 2), null);
+            sjE.blocks[0] = new Block(Color.HotPink, new Point(0, 0), board);
+            sjE.blocks[1] = new Block(Color.HotPink, new Point(1, 0), board);
+            sjE.blocks[2] = new Block(Color.HotPink, new Point(0, 1), board);
+            sjE.blocks[3] = new Block(Color.HotPink, new Point(0, 2), board);
 
-            for (int i = 0; i < shapeJ.blocks.Length; i++)
+            for (int i = 0; i < sj.blocks.Length; i++)
             {
-                Assert.AreEqual(shapeJTest.blocks[i].Position, shapeJ.blocks[i].Position);
+                Assert.AreEqual(sjE.blocks[i].Position, sj.blocks[i].Position);
             }
 
             // Rotating
-            shapeJ.Rotate();
+            sj.Rotate();
 
             // Fourth rotation
-            shapeJTest.blocks[0] = new Block(Color.HotPink, new Point(0, 0), null);
-            shapeJTest.blocks[1] = new Block(Color.HotPink, new Point(1, 0), null);
-            shapeJTest.blocks[2] = new Block(Color.HotPink, new Point(2, 0), null);
-            shapeJTest.blocks[3] = new Block(Color.HotPink, new Point(2, 1), null);
+            sjE.blocks[0] = new Block(Color.HotPink, new Point(0, 0), board);
+            sjE.blocks[1] = new Block(Color.HotPink, new Point(1, 0), board);
+            sjE.blocks[2] = new Block(Color.HotPink, new Point(2, 0), board);
+            sjE.blocks[3] = new Block(Color.HotPink, new Point(2, 1), board);
 
-            for (int i = 0; i < shapeJ.blocks.Length; i++)
+            for (int i = 0; i < sj.blocks.Length; i++)
             {
-                Assert.AreEqual(shapeJTest.blocks[i].Position, shapeJ.blocks[i].Position);
+                Assert.AreEqual(sjE.blocks[i].Position, sj.blocks[i].Position);
+            }
+        }
+
+        [TestMethod]
+        public void Test_reset() //needs access to the board 
+        {
+            // Init
+            IBoard board = new Board();
+            ShapeJ sj = new ShapeJ(board);
+            ShapeJ sjE = new ShapeJ(board);
+
+            sj.Rotate();
+            sj.Reset();
+
+            for (int i = 0; i < sj.blocks.Length; i++)
+            {
+                Assert.AreEqual(sjE.blocks[i].Position, sj.blocks[i].Position);
             }
         }
     }
