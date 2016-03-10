@@ -11,33 +11,7 @@ namespace TetrisTest
         [TestMethod]
         public void Test_Rotate1()
         {
-            ShapeS ss = new ShapeS();
-            ShapeS ssE = new ShapeS();
-            ss.Rotate();
-           
-            ssE.blocks[0] = new Block(Color.Tomato, new Point(0, 0));
-            ssE.blocks[1] = new Block(Color.Tomato, new Point(0, 1));
-            ssE.blocks[2] = new Block(Color.Tomato, new Point(1, 1));
-            ssE.blocks[3] = new Block(Color.Tomato, new Point(1, 2));
 
-            for (int i = 0; i < ss.blocks.Length; i++)
-            {
-                Assert.AreEqual(ssE.blocks[i].Position, ss.blocks[i].Position);
-            }
-        }
-        [TestMethod]
-        public void Test_Rotate_loopover()
-        {
-            ShapeS ss = new ShapeS();
-            ShapeS ssE = new ShapeS();
-            ss.Rotate();
-            ss.Rotate();
-
-
-            for (int i = 0; i < ss.blocks.Length; i++)
-            {
-                Assert.AreEqual(ssE.blocks[i].Position, ss.blocks[i].Position);
-            }
         }
 
         [TestMethod]
@@ -90,7 +64,7 @@ namespace TetrisTest
         {
             ShapeS ss = new ShapeS();
             ss.blocks[0] = new Block(Color.Aquamarine, new Point(9, 0));
-            ss.blocks[1] = new Block(Color.Aquamarine, new Point(10, 0));
+            ss.blocks[1] = new Block(Color.Aquamarine, new Point(1, 0));
             ss.blocks[2] = new Block(Color.Aquamarine, new Point(8, 1));
             ss.blocks[3] = new Block(Color.Aquamarine, new Point(9, 1));
 
@@ -111,14 +85,18 @@ namespace TetrisTest
         public void Test_Moveright()
         {
             ShapeS ss = new ShapeS();
+            ss.blocks[0] = new Block(Color.Aquamarine, new Point(1, 0));
+            ss.blocks[1] = new Block(Color.Aquamarine, new Point(2, 0));
+            ss.blocks[2] = new Block(Color.Aquamarine, new Point(0, 1));
+            ss.blocks[3] = new Block(Color.Aquamarine, new Point(1, 1));
 
-            ss.MoveRight();
+            ss.MoveLeft();
 
             ShapeS ssE = new ShapeS();
-            ssE.blocks[0] = new Block(Color.Aquamarine, new Point(1, 1));
-            ssE.blocks[1] = new Block(Color.Aquamarine, new Point(2, 1));
-            ssE.blocks[2] = new Block(Color.Aquamarine, new Point(2, 0));
-            ssE.blocks[3] = new Block(Color.Aquamarine, new Point(3, 0));
+            ss.blocks[0] = new Block(Color.Aquamarine, new Point(2, 0));
+            ss.blocks[1] = new Block(Color.Aquamarine, new Point(3, 0));
+            ss.blocks[2] = new Block(Color.Aquamarine, new Point(1, 1));
+            ss.blocks[3] = new Block(Color.Aquamarine, new Point(2, 1));
 
             for (int i = 0; i < ss.blocks.Length; i++)
             {
@@ -138,10 +116,10 @@ namespace TetrisTest
             ss.MoveDown();
 
             ShapeS ssE = new ShapeS();
-            ssE.blocks[0] = new Block(Color.Aquamarine, new Point(1, 1));
-            ssE.blocks[1] = new Block(Color.Aquamarine, new Point(2, 1));
-            ssE.blocks[2] = new Block(Color.Aquamarine, new Point(0, 2));
-            ssE.blocks[3] = new Block(Color.Aquamarine, new Point(1, 2));
+            ss.blocks[0] = new Block(Color.Aquamarine, new Point(1, 1));
+            ss.blocks[1] = new Block(Color.Aquamarine, new Point(2, 1));
+            ss.blocks[2] = new Block(Color.Aquamarine, new Point(0, 2));
+            ss.blocks[3] = new Block(Color.Aquamarine, new Point(1, 2));
 
             for (int i = 0; i < ss.blocks.Length; i++)
             {
@@ -196,11 +174,18 @@ namespace TetrisTest
         public void Test_reset() //needs access to the board 
         {
             ShapeS ss = new ShapeS();
-            ss.Rotate();
+            ss.blocks[0] = new Block(Color.Aquamarine, new Point(1, 0));
+            ss.blocks[1] = new Block(Color.Aquamarine, new Point(1, 0));
+            ss.blocks[2] = new Block(Color.Aquamarine, new Point(0, 1));
+            ss.blocks[3] = new Block(Color.Aquamarine, new Point(1, 1));
 
             ss.Reset();
 
             ShapeS ssE = new ShapeS();
+            ssE.blocks[0] = new Block(Color.Aquamarine, new Point(1, 0));
+            ssE.blocks[1] = new Block(Color.Aquamarine, new Point(2, 0));
+            ssE.blocks[2] = new Block(Color.Aquamarine, new Point(0, 1));
+            ssE.blocks[3] = new Block(Color.Aquamarine, new Point(1, 1));
 
             for (int i = 0; i < ss.blocks.Length; i++)
             {
