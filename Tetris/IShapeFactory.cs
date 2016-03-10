@@ -9,6 +9,7 @@ namespace Tetris
     public interface IShapeFactory
     {
         void DeployNewShape();
+        IShape CurrentShape { get; }
 
     }
 }

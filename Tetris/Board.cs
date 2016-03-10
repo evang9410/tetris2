@@ -128,7 +128,7 @@ namespace Tetris
 
             for(int i = 0; i < shape.Length; i++)
             {
-                shape[i].Position = new Point(shape[i].Position.X + offsetX, shape[i].Position.Y + offsetY);
+                shape[i].Position = new Point(offsetX, offsetY);
 
                 if (!board[shape[i].Position.X + offsetX, shape[i].Position.Y + offsetY].Equals(Color.Black))
                 {

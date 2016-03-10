@@ -16,7 +16,13 @@ namespace Tetris
         public ShapeProxy(IBoard board)
         {
             this.board = board;
+            rnd = new Random();
             
+        }
+
+        public IShape CurrentShape
+        {
+            get { return current; }
         }
 
         public void DeployNewShape()
@@ -76,19 +82,14 @@ namespace Tetris
         }
 
         public void MoveLeft()
-        {
-            for (int i = 0; i < current.Length; i++)
-            {
-                current[i].MoveLeft();
-            }
+        { 
+            current.MoveLeft();
         }
 
         public void MoveRight()
         {
-            for (int i = 0; i < current.Length; i++)
-            {
-                current[i].MoveRight();
-            }
+           current.MoveRight();
+ 
         }
 
         public void MoveDown()
