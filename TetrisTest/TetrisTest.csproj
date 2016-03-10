@@ -54,11 +54,11 @@
   <ItemGroup>
     <Compile Include="ScoreTest.cs" />
     <Compile Include="ShapeITest.cs" />
-    <Compile Include="TestShapeO.cs" />
-    <Compile Include="TestShapeS.cs" />
-    <Compile Include="TestShapeZ.cs" />
+    <Compile Include="ShapeJTest.cs" />
+    <Compile Include="ShapeLTest.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShapeJTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tetris\Tetris.csproj">
