@@ -24,7 +24,7 @@ namespace Tetris
                 }
             }
             shapeFactory = new ShapeProxy(this);
-            shape = (IShape)shapeFactory;
+            this.shape = (IShape)shapeFactory;
 
             shape.JoinPile += addToPile;
         }
