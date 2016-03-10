@@ -8,12 +8,10 @@ namespace TetrisTest
     public class ShapeITest
     {
         [TestMethod]
-        public void Test_Rotate1()
+        public void Test_Rotate_Rollover()
         {
-
-            
             ShapeI shapeI = new ShapeI();
-            //rotate I shape to vertical position
+            //First rotate
             shapeI.Rotate();
 
             ShapeI testShapeI = new ShapeI();
@@ -26,7 +24,20 @@ namespace TetrisTest
             {
                 Assert.AreEqual(testShapeI.blocks[i].Position, shapeI.blocks[i].Position);
             }
-                  
+
+            //Second rotate (Initial)
+            shapeI.Rotate();
+
+            testShapeI = new ShapeI();
+            testShapeI.blocks[0] = new Block(Color.Aquamarine, new Point(0, 0));
+            testShapeI.blocks[1] = new Block(Color.Aquamarine, new Point(0, 1));
+            testShapeI.blocks[2] = new Block(Color.Aquamarine, new Point(0, 2));
+            testShapeI.blocks[3] = new Block(Color.Aquamarine, new Point(0, 3));
+
+            for (int i = 0; i < shapeI.blocks.Length; i++)
+            {
+                Assert.AreEqual(testShapeI.blocks[i].Position, shapeI.blocks[i].Position);
+            }
         }
 
         [TestMethod]
