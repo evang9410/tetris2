@@ -10,7 +10,7 @@ namespace Tetris
     public class ShapeT: Shape
     {
         private Block[] reset;
-        private Block[][] rotations = new Block[4][];
+        private Block[][] rotations = new Block[5][];
         public ShapeT(IBoard board)
             : base(board)
         {
@@ -24,22 +24,28 @@ namespace Tetris
             block = rotations[0];
             reset = rotations[0];
 
-            rotations[1][0] = new Block(Color.Purple, new Point(block[0].Position.X, block[0].Position.Y - 1), board);
-            rotations[1][1] = new Block(Color.Purple, new Point(1, 0), board);
-            rotations[1][2] = new Block(Color.Purple, new Point(1, 1), board);
-            rotations[1][3] = new Block(Color.Purple, new Point(1, 2), board);
+            rotations[1][0] = new Block(Color.Purple, new Point(block[0].Position.X, block[0].Position.Y + 1), board); //0,1
+            rotations[1][1] = new Block(Color.Purple, new Point(block[1].Position.X, block[1].Position.Y + 1), board); //1,0
+            rotations[1][2] = new Block(Color.Purple, new Point(block[2].Position.X - 1, block[2].Position.Y + 1), board); //1,1
+            rotations[1][3] = new Block(Color.Purple, new Point(block[3].Position.X, block[3].Position.Y + 1), board);//1,2
 
-            rotations[2][0] = new Block(Color.Purple, new Point(1, 0), board);
-            rotations[2][1] = new Block(Color.Purple, new Point(0, 1), board);
-            rotations[2][2] = new Block(Color.Purple, new Point(1, 1), board);
-            rotations[2][3] = new Block(Color.Purple, new Point(2, 1), board);
+            rotations[2][0] = new Block(Color.Purple, new Point(block[0].Position.X + 1, block[0].Position.Y - 1), board);//1,0
+            rotations[2][1] = new Block(Color.Purple, new Point(block[1].Position.X - 1, block[1].Position.Y + 1), board);//0,1
+            rotations[2][2] = new Block(Color.Purple, new Point(block[2].Position.X, block[2].Position.Y), board);//1,1
+            rotations[2][3] = new Block(Color.Purple, new Point(block[3].Position.X + 1, block[3].Position.Y - 1), board);//2,1
 
-            rotations[3][0] = new Block(Color.Purple, new Point(0, 0), board);
-            rotations[3][1] = new Block(Color.Purple, new Point(0, 1), board);
-            rotations[3][2] = new Block(Color.Purple, new Point(1, 1), board);
-            rotations[3][3] = new Block(Color.Purple, new Point(0, 2), board);
+            rotations[3][0] = new Block(Color.Purple, new Point(block[0].Position.X - 1, block[0].Position.Y), board);//0,0
+            rotations[3][1] = new Block(Color.Purple, new Point(block[1].Position.X, block[1].Position.Y), board);//0,1
+            rotations[3][2] = new Block(Color.Purple, new Point(block[2].Position.X, block[2].Position.Y), board);//1,1
+            rotations[3][3] = new Block(Color.Purple, new Point(block[3].Position.X - 2, block[3].Position.Y + 1), board);//0,2
+            
+            //back to initial position
+            rotations[4][0] = new Block(Color.Purple, new Point(block[0].Position.X, block[0].Position.Y), board);//0,0
+            rotations[4][1] = new Block(Color.Purple, new Point(block[1].Position.X + 1, block[1].Position.Y - 1), board);//1,0
+            rotations[4][2] = new Block(Color.Purple, new Point(block[2].Position.X + 1, block[2].Position.Y - 1), board);//2,0
+            rotations[4][3] = new Block(Color.Purple, new Point(block[3].Position.X + 1, block[3].Position.Y - 1), board);//1,1
 
-            block = rotations[0];
+            
         }
         public override void Reset()
         {
