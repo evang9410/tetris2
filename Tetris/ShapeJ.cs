@@ -23,20 +23,20 @@ namespace Tetris
             block = rotations[0];
             reset = rotations[0];
 
-            rotations[1][0] = new Block(Color.HotPink, new Point(block[0].Position.X - 1, block[0].Position.Y + 1), board);
-            rotations[1][1] = new Block(Color.HotPink, new Point(block[1].Position.X - 1,block[1].Position.Y + 1), board);
-            rotations[1][2] = new Block(Color.HotPink, new Point(block[2].Position.X + 0, block[2].Position.Y + 0),board);
-            rotations[1][3] = new Block(Color.HotPink, new Point(block[3].Position.X + 2, block[3].Position.Y + 0),board);
+            rotations[1][0] = new Block(Color.HotPink, new Point(block[0].Position.X - 1, block[0].Position.Y + 1), board);//0,1
+            rotations[1][1] = new Block(Color.HotPink, new Point(block[1].Position.X - 1,block[1].Position.Y + 1), board);//0,2
+            rotations[1][2] = new Block(Color.HotPink, new Point(block[2].Position.X + 0, block[2].Position.Y + 0),board);//1,2
+            rotations[1][3] = new Block(Color.HotPink, new Point(block[3].Position.X + 2, block[3].Position.Y + 0),board);//2,2
 
-            rotations[2][0] = new Block(Color.HotPink, new Point(block[0].Position.X, block[0].Position.Y - 1), board);
-            rotations[2][1] = new Block(Color.HotPink, new Point(block[1].Position.X + 1, block[1].Position.Y - 2), board);
-            rotations[2][2] = new Block(Color.HotPink, new Point(block[2].Position.X - 1, block[2].Position.Y - 1), board);
-            rotations[2][3] = new Block(Color.HotPink, new Point(block[3].Position.X - 2, block[3].Position.Y), board);
+            rotations[2][0] = new Block(Color.HotPink, new Point(block[0].Position.X, block[0].Position.Y - 1), board);//0,0
+            rotations[2][1] = new Block(Color.HotPink, new Point(block[1].Position.X + 1, block[1].Position.Y - 2), board);//1,0
+            rotations[2][2] = new Block(Color.HotPink, new Point(block[2].Position.X, block[2].Position.Y - 2), board);//1,0
+            rotations[2][3] = new Block(Color.HotPink, new Point(block[3].Position.X - 2, block[3].Position.Y), board);//0,2
 
-            rotations[3][0] = new Block(Color.HotPink, new Point(block[0].Position.X + 0, block[0].Position.Y), board);
-            rotations[3][1] = new Block(Color.HotPink, new Point(block[1].Position.X + 0, block[1].Position.Y), board);
-            rotations[3][2] = new Block(Color.HotPink, new Point(block[2].Position.X + 2, block[2].Position.Y - 1), board);
-            rotations[3][3] = new Block(Color.HotPink, new Point(block[3].Position.X + 2, block[3].Position.Y - 1), board);
+            rotations[3][0] = new Block(Color.HotPink, new Point(block[0].Position.X + 0, block[0].Position.Y), board);//0,0
+            rotations[3][1] = new Block(Color.HotPink, new Point(block[1].Position.X + 0, block[1].Position.Y), board);//1,0
+            rotations[3][2] = new Block(Color.HotPink, new Point(block[2].Position.X + 1, block[2].Position.Y), board);//2,0
+            rotations[3][3] = new Block(Color.HotPink, new Point(block[3].Position.X + 2, block[3].Position.Y - 1), board);//2,1
 
         }
         public override void Reset()
