@@ -68,10 +68,19 @@ namespace TetrisTest
             ShapeProxy sp = new ShapeProxy(board);
             sp.DeployNewShape();
             IShape s = sp.CurrentShape;
-            int dropped = board.GetLength(1) - 1;
 
             s.Drop();
-            Assert.AreEqual(dropped, s[3].Position.Y);
+
+            bool dropped = false;
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i].Position.Y == board.GetLength(1) - 1)
+                {
+                    dropped = true;
+                }
+            }
+
+            Assert.IsTrue(dropped);
         }
         [TestMethod]
         public void Test_Reset()

@@ -15,12 +15,15 @@ namespace TetrisTest
             IBoard board = new Board();
             ShapeJ sj = new ShapeJ(board);
             ShapeJ sjE = new ShapeJ(board);
-            
+
+            // Rotating
+            sj.Rotate();
+
             // First rotation
-            sjE.blocks[0] = new Block(Color.HotPink, new Point(1, 0), board);
+            sjE.blocks[0] = new Block(Color.HotPink, new Point(2, 1), board);
             sjE.blocks[1] = new Block(Color.HotPink, new Point(1, 1), board);
-            sjE.blocks[2] = new Block(Color.HotPink, new Point(1, 2), board);
-            sjE.blocks[3] = new Block(Color.HotPink, new Point(0, 2), board);
+            sjE.blocks[2] = new Block(Color.HotPink, new Point(0, 1), board);
+            sjE.blocks[3] = new Block(Color.HotPink, new Point(0, 0), board);
 
             for (int i = 0; i < sj.blocks.Length; i++)
             {
@@ -31,10 +34,10 @@ namespace TetrisTest
             sj.Rotate();
 
             // Second rotation
-            sjE.blocks[0] = new Block(Color.HotPink, new Point(0, 1), board);
-            sjE.blocks[1] = new Block(Color.HotPink, new Point(0, 2), board);
-            sjE.blocks[2] = new Block(Color.HotPink, new Point(1, 2), board);
-            sjE.blocks[3] = new Block(Color.HotPink, new Point(2, 2), board);
+            sjE.blocks[0] = new Block(Color.HotPink, new Point(0, 2), board);
+            sjE.blocks[1] = new Block(Color.HotPink, new Point(0, 1), board);
+            sjE.blocks[2] = new Block(Color.HotPink, new Point(0, 0), board);
+            sjE.blocks[3] = new Block(Color.HotPink, new Point(1, 0), board);
 
             for (int i = 0; i < sj.blocks.Length; i++)
             {
@@ -47,20 +50,6 @@ namespace TetrisTest
             // Third rotation
             sjE.blocks[0] = new Block(Color.HotPink, new Point(0, 0), board);
             sjE.blocks[1] = new Block(Color.HotPink, new Point(1, 0), board);
-            sjE.blocks[2] = new Block(Color.HotPink, new Point(0, 1), board);
-            sjE.blocks[3] = new Block(Color.HotPink, new Point(0, 2), board);
-
-            for (int i = 0; i < sj.blocks.Length; i++)
-            {
-                Assert.AreEqual(sjE.blocks[i].Position, sj.blocks[i].Position);
-            }
-            /*
-            // Rotating
-            sj.Rotate();
-
-            // Fourth rotation
-            sjE.blocks[0] = new Block(Color.HotPink, new Point(0, 0), board);
-            sjE.blocks[1] = new Block(Color.HotPink, new Point(1, 0), board);
             sjE.blocks[2] = new Block(Color.HotPink, new Point(2, 0), board);
             sjE.blocks[3] = new Block(Color.HotPink, new Point(2, 1), board);
 
@@ -68,7 +57,20 @@ namespace TetrisTest
             {
                 Assert.AreEqual(sjE.blocks[i].Position, sj.blocks[i].Position);
             }
-            */
+            
+            // Rotating
+            sj.Rotate();
+
+            // Fourth rotation (initial)
+            sjE.blocks[0] = new Block(Color.HotPink, new Point(1, 0), board);
+            sjE.blocks[1] = new Block(Color.HotPink, new Point(1, 1), board);
+            sjE.blocks[2] = new Block(Color.HotPink, new Point(1, 2), board);
+            sjE.blocks[3] = new Block(Color.HotPink, new Point(0, 2), board);
+
+            for (int i = 0; i < sj.blocks.Length; i++)
+            {
+                Assert.AreEqual(sjE.blocks[i].Position, sj.blocks[i].Position);
+            }
         }
 
         [TestMethod]

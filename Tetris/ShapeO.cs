@@ -9,25 +9,27 @@ namespace Tetris
 {
     public class ShapeO : Shape
     {
-        private Block[][] rotations = new Block[1][];
-        private Block[] reset;
+        private Block[] blocks = new Block[4];
         public ShapeO(IBoard board)
             : base(board)
         {
-            for (int i = 0; i < rotations.Length; i++)
-                rotations[i] = new Block[4];
+            // Initial pos
+            blocks[0] = new Block(Color.Yellow, new Point(0, 0), board);
+            blocks[1] = new Block(Color.Yellow, new Point(1, 0), board);
+            blocks[2] = new Block(Color.Yellow, new Point(0, 1), board);
+            blocks[3] = new Block(Color.Yellow, new Point(1, 1), board);
 
-            rotations[0][0] = new Block(Color.Yellow, new Point(0, 0), board);
-            rotations[0][1] = new Block(Color.Yellow, new Point(1, 0), board);
-            rotations[0][2] = new Block(Color.Yellow, new Point(0, 1), board);
-            rotations[0][3] = new Block(Color.Yellow, new Point(1, 1), board);
-
-            block = rotations[0];
-            reset = rotations[0];
+            block = blocks;
         }
         public override void Reset()
         {
-            block = rotations[0];
+            blocks[0].Position = new Point(0, 0);
+            blocks[1].Position = new Point(1, 0);
+            blocks[2].Position = new Point(0, 1);
+            blocks[3].Position = new Point(1, 1);
+
+            currentRotation = 0;
+            block = blocks;
         }
 
         public override void Rotate()

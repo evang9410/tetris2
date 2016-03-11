@@ -16,11 +16,14 @@ namespace TetrisTest
             ShapeT st = new ShapeT(board);
             ShapeT stE = new ShapeT(board);
 
+            // Rotating
+            st.Rotate();
+
             // First rotation
-            stE.blocks[0] = new Block(Color.Purple, new Point(0, 0), board);
-            stE.blocks[1] = new Block(Color.Purple, new Point(1, 0), board);
-            stE.blocks[2] = new Block(Color.Purple, new Point(2, 0), board);
-            stE.blocks[3] = new Block(Color.Purple, new Point(1, 1), board);
+            stE.blocks[0] = new Block(Color.Purple, new Point(1, 0), board);
+            stE.blocks[1] = new Block(Color.Purple, new Point(1, 1), board);
+            stE.blocks[2] = new Block(Color.Purple, new Point(1, 2), board);
+            stE.blocks[3] = new Block(Color.Purple, new Point(0, 1), board);
 
             for (int i = 0; i < st.blocks.Length; i++)
             {
@@ -31,10 +34,10 @@ namespace TetrisTest
             st.Rotate();
 
             // Second rotation
-            stE.blocks[0] = new Block(Color.Purple, new Point(0, 1), board);
-            stE.blocks[1] = new Block(Color.Purple, new Point(1, 0), board);
-            stE.blocks[2] = new Block(Color.Purple, new Point(1, 1), board);
-            stE.blocks[3] = new Block(Color.Purple, new Point(1, 2), board);
+            stE.blocks[0] = new Block(Color.Purple, new Point(2, 1), board);
+            stE.blocks[1] = new Block(Color.Purple, new Point(1, 1), board);
+            stE.blocks[2] = new Block(Color.Purple, new Point(0, 1), board);
+            stE.blocks[3] = new Block(Color.Purple, new Point(1, 0), board);
 
             for (int i = 0; i < st.blocks.Length; i++)
             {
@@ -45,10 +48,10 @@ namespace TetrisTest
             st.Rotate();
 
             // Third rotation
-            stE.blocks[0] = new Block(Color.Purple, new Point(1, 0), board);
+            stE.blocks[0] = new Block(Color.Purple, new Point(0, 2), board);
             stE.blocks[1] = new Block(Color.Purple, new Point(0, 1), board);
-            stE.blocks[2] = new Block(Color.Purple, new Point(1, 1), board);
-            stE.blocks[3] = new Block(Color.Purple, new Point(2, 1), board);
+            stE.blocks[2] = new Block(Color.Purple, new Point(0, 0), board);
+            stE.blocks[3] = new Block(Color.Purple, new Point(1, 1), board);
 
             for (int i = 0; i < st.blocks.Length; i++)
             {
@@ -60,9 +63,9 @@ namespace TetrisTest
 
             // Fourth rotation
             stE.blocks[0] = new Block(Color.Purple, new Point(0, 0), board);
-            stE.blocks[1] = new Block(Color.Purple, new Point(0, 1), board);
-            stE.blocks[2] = new Block(Color.Purple, new Point(1, 1), board);
-            stE.blocks[3] = new Block(Color.Purple, new Point(0, 2), board);
+            stE.blocks[1] = new Block(Color.Purple, new Point(1, 0), board);
+            stE.blocks[2] = new Block(Color.Purple, new Point(2, 0), board);
+            stE.blocks[3] = new Block(Color.Purple, new Point(1, 1), board);
 
             for (int i = 0; i < st.blocks.Length; i++)
             {
