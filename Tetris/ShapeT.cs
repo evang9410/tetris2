@@ -9,7 +9,7 @@ namespace Tetris
 {
     public class ShapeT: Shape
     {
-        private IBoard board;
+        private Block[] reset;
         private Block[][] rotations = new Block[4][];
         public ShapeT(IBoard board)
             : base(board)
@@ -21,8 +21,10 @@ namespace Tetris
             rotations[0][1] = new Block(Color.Purple, new Point(1, 0), board);
             rotations[0][2] = new Block(Color.Purple, new Point(2, 0), board);
             rotations[0][3] = new Block(Color.Purple, new Point(1, 1), board);
+            block = rotations[0];
+            reset = rotations[0];
 
-            rotations[1][0] = new Block(Color.Purple, new Point(0, 1), board);
+            rotations[1][0] = new Block(Color.Purple, new Point(block[0].Position.X, block[0].Position.Y - 1), board);
             rotations[1][1] = new Block(Color.Purple, new Point(1, 0), board);
             rotations[1][2] = new Block(Color.Purple, new Point(1, 1), board);
             rotations[1][3] = new Block(Color.Purple, new Point(1, 2), board);
@@ -41,7 +43,7 @@ namespace Tetris
         }
         public override void Reset()
         {
-            block = rotations[0];
+            block = reset;
         }
 
         public override void Rotate()

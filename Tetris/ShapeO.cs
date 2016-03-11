@@ -10,7 +10,7 @@ namespace Tetris
     public class ShapeO : Shape
     {
         private Block[][] rotations = new Block[1][];
-        private IBoard board;
+        private Block[] reset;
         public ShapeO(IBoard board)
             : base(board)
         {
@@ -23,6 +23,7 @@ namespace Tetris
             rotations[0][3] = new Block(Color.Yellow, new Point(1, 1), board);
 
             block = rotations[0];
+            reset = rotations[0];
         }
         public override void Reset()
         {

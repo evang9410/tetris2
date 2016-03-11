@@ -9,28 +9,35 @@ namespace Tetris
 {
     public class ShapeI : Shape
     {
-        private Block[][] rotations = new Block[2][];
+        private Block[][] rotations = new Block[3][];
+        private Block[] reset;
         public ShapeI(IBoard board)
             : base(board)
         {
-            for(int i = 0 ; i < 2; i++)
+            for(int i = 0 ; i < 3; i++)
                 rotations[i] = new Block[4];
 
             rotations[0][0] = new Block(Color.Aquamarine, new Point(0, 0), board);
             rotations[0][1] = new Block(Color.Aquamarine, new Point(0, 1), board);
             rotations[0][2] = new Block(Color.Aquamarine, new Point(0, 2), board);
             rotations[0][3] = new Block(Color.Aquamarine, new Point(0, 3), board);
-
-            rotations[1][0] = new Block(Color.Aquamarine, new Point(0, 0), board);
-            rotations[1][1] = new Block(Color.Aquamarine, new Point(1, 0), board);
-            rotations[1][2] = new Block(Color.Aquamarine, new Point(2, 0), board);
-            rotations[1][3] = new Block(Color.Aquamarine, new Point(3, 0), board);
-
             block = rotations[0];
+            reset = rotations[0];
+
+            rotations[1][0] = new Block(Color.Aquamarine, new Point(block[0].Position.X, block[0].Position.Y), board);
+            rotations[1][1] = new Block(Color.Aquamarine, new Point(block[1].Position.X + 1, block[1].Position.Y - 1), board);
+            rotations[1][2] = new Block(Color.Aquamarine, new Point(block[2].Position.X + 2, block[2].Position.Y - 2), board);
+            rotations[1][3] = new Block(Color.Aquamarine, new Point(block[3].Position.X + 3, block[3].Position.Y - 3), board);
+
+            rotations[2][0] = new Block(Color.Aquamarine, new Point(block[0].Position.X, block[0].Position.Y), board);
+            rotations[2][1] = new Block(Color.Aquamarine, new Point(block[1].Position.X - 1, block[1].Position.Y + 1), board);
+            rotations[2][2] = new Block(Color.Aquamarine, new Point(block[2].Position.X - 2, block[2].Position.Y + 2), board);
+            rotations[2][3] = new Block(Color.Aquamarine, new Point(block[3].Position.X - 3, block[3].Position.Y + 3), board);
+
         }
         public override void Reset()
         {
-            block = rotations[0];
+            block = reset;
         }
 
         public override void Rotate()
@@ -40,11 +47,17 @@ namespace Tetris
                 block = rotations[1];
                 currentRotation = 1;
             }
-            else
+            else if (currentRotation == 1)
             {
-                block = rotations[0];
+                block = rotations[2];
                 currentRotation = 0;
             }
+            else
+            {
+                block = rotations[2];
+                currentRotation = 0;
+            }
+            
         }
 
     }

@@ -26,7 +26,7 @@ namespace TetrisTest
             {
                 Assert.AreEqual(siE.blocks[i].Position, si.blocks[i].Position);
             }
-
+            
             // Rotating
             si.Rotate();
 

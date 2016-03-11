@@ -9,8 +9,8 @@ namespace Tetris
 {
     public class ShapeS : Shape
     {
-        private IBoard board;
-        private Block[][] rotations = new Block[2][];
+        private Block[][] rotations = new Block[3][];
+        private Block[] reset;
         public ShapeS(IBoard board)
             : base(board)
         {
@@ -21,17 +21,24 @@ namespace Tetris
             rotations[0][1] = new Block(Color.Tomato, new Point(1, 1), board);
             rotations[0][2] = new Block(Color.Tomato, new Point(1, 0), board);
             rotations[0][3] = new Block(Color.Tomato, new Point(2, 0), board);
-
-            rotations[1][0] = new Block(Color.Tomato, new Point(0, 0), board);
-            rotations[1][1] = new Block(Color.Tomato, new Point(0, 1), board);
-            rotations[1][2] = new Block(Color.Tomato, new Point(1, 1), board);
-            rotations[1][3] = new Block(Color.Tomato, new Point(1, 2), board);
-
             block = rotations[0];
+            reset = rotations[0];
+
+            rotations[1][0] = new Block(Color.Tomato, new Point(block[0].Position.X, block[0].Position.Y - 1), board);
+            rotations[1][1] = new Block(Color.Tomato, new Point(block[1].Position.X - 1, block[1].Position.Y), board);
+            rotations[1][2] = new Block(Color.Tomato, new Point(block[2].Position.X, block[2].Position.Y + 1), board);
+            rotations[1][3] = new Block(Color.Tomato, new Point(block[3].Position.X - 1, block[3].Position.Y + 2), board);
+
+            rotations[2][0] = new Block(Color.Tomato, new Point(block[0].Position.X, block[0].Position.Y + 1), board);
+            rotations[2][1] = new Block(Color.Tomato, new Point(block[1].Position.X + 1, block[1].Position.Y), board);
+            rotations[2][2] = new Block(Color.Tomato, new Point(block[2].Position.X, block[2].Position.Y - 1), board);
+            rotations[2][3] = new Block(Color.Tomato, new Point(block[3].Position.X + 1, block[3].Position.Y - 2), board);
+
+
         }
         public override void Reset()
         {
-            block = rotations[0];
+            block = reset;
         }
 
         public override void Rotate()
