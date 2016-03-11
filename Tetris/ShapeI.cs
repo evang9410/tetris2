@@ -24,15 +24,16 @@ namespace Tetris
             block = rotations[0];
             reset = rotations[0];
 
-            rotations[1][0] = new Block(Color.Aquamarine, new Point(block[0].Position.X, block[0].Position.Y), board);
-            rotations[1][1] = new Block(Color.Aquamarine, new Point(block[1].Position.X + 1, block[1].Position.Y - 1), board);
-            rotations[1][2] = new Block(Color.Aquamarine, new Point(block[2].Position.X + 2, block[2].Position.Y - 2), board);
-            rotations[1][3] = new Block(Color.Aquamarine, new Point(block[3].Position.X + 3, block[3].Position.Y - 3), board);
-
-            rotations[2][0] = new Block(Color.Aquamarine, new Point(block[0].Position.X, block[0].Position.Y), board);
-            rotations[2][1] = new Block(Color.Aquamarine, new Point(block[1].Position.X - 1, block[1].Position.Y + 1), board);
-            rotations[2][2] = new Block(Color.Aquamarine, new Point(block[2].Position.X - 2, block[2].Position.Y + 2), board);
-            rotations[2][3] = new Block(Color.Aquamarine, new Point(block[3].Position.X - 3, block[3].Position.Y + 3), board);
+            rotations[1][0] = new Block(Color.Aquamarine, new Point(block[0].Position.X, block[0].Position.Y), board); //0,0
+            rotations[1][1] = new Block(Color.Aquamarine, new Point(block[1].Position.X + 1, block[1].Position.Y - 1), board);//1,0
+            rotations[1][2] = new Block(Color.Aquamarine, new Point(block[2].Position.X + 2, block[2].Position.Y - 2), board);//2,0
+            rotations[1][3] = new Block(Color.Aquamarine, new Point(block[3].Position.X + 3, block[3].Position.Y - 3), board);//3,0
+            
+            //back to normal.
+            rotations[2][0] = new Block(Color.Aquamarine, new Point(block[0].Position.X, block[0].Position.Y), board);//0,0
+            rotations[2][1] = new Block(Color.Aquamarine, new Point(block[1].Position.X - 1, block[1].Position.Y + 1), board);//0,1
+            rotations[2][2] = new Block(Color.Aquamarine, new Point(block[2].Position.X - 2, block[2].Position.Y + 2), board);//0,2
+            rotations[2][3] = new Block(Color.Aquamarine, new Point(block[3].Position.X - 3, block[3].Position.Y + 3), board);//0,3
 
         }
         public override void Reset()
