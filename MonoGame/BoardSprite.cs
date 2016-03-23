@@ -12,7 +12,7 @@ namespace MonoGame
     class BoardSprite: Game1
     {
         private IBoard board;
-        private Game1 game;
+        private Game game;
         private SpriteBatch spriteBatch;
 
         //To render
@@ -20,7 +20,7 @@ namespace MonoGame
         Texture2D filledBlock;
 
         //Constructor
-        public BoardSprite(Game1 game, IBoard board)
+        public BoardSprite(Game game, IBoard board)
         {
             this.game = game;
             this.board = board;
@@ -32,6 +32,7 @@ namespace MonoGame
         }
         protected override void LoadContent()
         {
+
             base.LoadContent();
         }
 

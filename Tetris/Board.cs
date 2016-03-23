@@ -29,8 +29,6 @@ namespace Tetris
             shape.JoinPile += addToPile;
         }
 
-
-
         public event LinesClearedHandler LinesCleared;
 
         protected virtual void onLinesCleared(int lines)

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Tetris;
 
 namespace MonoGame
 {
@@ -9,11 +10,11 @@ namespace MonoGame
     /// </summary>
     public class Game1 : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-        BoardSprite boardSprite;
-        ShapeSprite shapeSprite;
-        ScoreSprite scoreSprite;
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
+        private BoardSprite boardSprite;
+        private ShapeSprite shapeSprite;
+        private ScoreSprite scoreSprite;
 
         public Game1()
             : base()
@@ -31,7 +32,10 @@ namespace MonoGame
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
+            boardSprite = new BoardSprite(this, new Board());
+            shapeSprite = new ShapeSprite();
+            //scoreSprite = new ScoreSprite();
             base.Initialize();
         }
 
