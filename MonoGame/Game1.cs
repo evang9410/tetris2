@@ -21,6 +21,10 @@ namespace MonoGame
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            graphics.PreferredBackBufferWidth = 256;
+            graphics.PreferredBackBufferHeight = 256;
+            
         }
 
         /// <summary>
@@ -31,12 +35,22 @@ namespace MonoGame
         /// </summary>
         protected override void Initialize()
         {
+            Board  board = new Board();
+            Score score = new Score(board);
             // TODO: Add your initialization logic here
             spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
-            boardSprite = new BoardSprite(this, new Board());
+            boardSprite = new BoardSprite(this, board);
             shapeSprite = new ShapeSprite();
-            //scoreSprite = new ScoreSprite();
+            scoreSprite = new ScoreSprite(this, score);
+
+            Components.Add(boardSprite);
+            Components.Add(scoreSprite);
+            Components.Add(shapeSprite);
+
+            
             base.Initialize();
+
+            
         }
 
         /// <summary>
@@ -49,6 +63,7 @@ namespace MonoGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            
         }
 
         /// <summary>
@@ -68,7 +83,7 @@ namespace MonoGame
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+                //Exit();
 
             // TODO: Add your update logic here
 
@@ -82,10 +97,12 @@ namespace MonoGame
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            var fps = 1 / gameTime.ElapsedGameTime.TotalSeconds;
 
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
         }
+
     }
 }

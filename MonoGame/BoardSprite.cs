@@ -9,7 +9,7 @@ using Tetris;
 
 namespace MonoGame
 {
-    class BoardSprite: Game1
+    class BoardSprite: DrawableGameComponent
     {
         private IBoard board;
         private Game game;
@@ -20,7 +20,7 @@ namespace MonoGame
         Texture2D filledBlock;
 
         //Constructor
-        public BoardSprite(Game game, IBoard board)
+        public BoardSprite(Game game, IBoard board): base(game)
         {
             this.game = game;
             this.board = board;
@@ -32,6 +32,12 @@ namespace MonoGame
         }
         protected override void LoadContent()
         {
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            emptyBlock = game.Content.Load<Texture2D>("EmptyBlock");
+            filledBlock = game.Content.Load<Texture2D>("FilledBlock");
+
+            board = new Board();
 
             base.LoadContent();
         }
@@ -43,6 +49,22 @@ namespace MonoGame
 
         public override void Draw(GameTime gameTime)
         {
+            spriteBatch.Begin();
+            for(int x = 0; x < board.GetLength(0); x++)
+            {
+                for(int y = 0; y < board.GetLength(1); y++)
+                {
+                    if (board[x, y] != Color.Black)
+                    {
+                        spriteBatch.Draw(filledBlock, new Vector2(x, y), board[x, y]);
+                    }
+                    else
+                    {
+                        spriteBatch.Draw(emptyBlock, new Vector2(x, y), board[x, y]);
+                    }
+                }
+            }
+            spriteBatch.End();
             base.Draw(gameTime);
         }
 

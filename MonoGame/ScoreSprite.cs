@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace MonoGame
 {
-    class ScoreSprite: Game1
+    class ScoreSprite: DrawableGameComponent
     {
         private Score score;
         private Game game;
@@ -18,7 +18,7 @@ namespace MonoGame
         //To render
         private SpriteFont font;
 
-        public ScoreSprite(Game game, Score score)
+        public ScoreSprite(Game game, Score score) : base(game)
         {
             this.game = game;
             this.score = score;
@@ -26,12 +26,15 @@ namespace MonoGame
 
         public override void Initialize()
         {
+            
             base.Initialize();
         }
         protected override void LoadContent()
         {
-
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            font = game.Content.Load<SpriteFont>("scoreFont");
             base.LoadContent();
+           
         }
 
         public override void Update(GameTime gameTime)
@@ -41,6 +44,9 @@ namespace MonoGame
 
         public override void Draw(GameTime gameTime)
         {
+            spriteBatch.Begin();
+            spriteBatch.DrawString(font, "Score: " + score, new Vector2(0, 0), Color.White);
+            spriteBatch.End();
             base.Draw(gameTime);
         }
         
