@@ -16,6 +16,9 @@ namespace MonoGame
         private ShapeSprite shapeSprite;
         private ScoreSprite scoreSprite;
 
+        Board board;
+        Score score;
+
         public Game1()
             : base()
         {
@@ -24,6 +27,10 @@ namespace MonoGame
 
             graphics.PreferredBackBufferWidth = 256;
             graphics.PreferredBackBufferHeight = 256;
+
+
+            board = new Board();
+            score = new Score(board);
             
         }
 
@@ -35,8 +42,7 @@ namespace MonoGame
         /// </summary>
         protected override void Initialize()
         {
-            Board  board = new Board();
-            Score score = new Score(board);
+            
             // TODO: Add your initialization logic here
             spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
             boardSprite = new BoardSprite(this, board);
@@ -63,6 +69,7 @@ namespace MonoGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            scoreSprite = new ScoreSprite(this,score);
             
         }
 
