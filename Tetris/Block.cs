@@ -19,20 +19,20 @@ namespace Tetris
         /// ShapeT = Color.Purple
         /// </summary>
         private IBoard board;
-        private Color colour;
+        private Color color;
         private Point pos;
         private Color[,] col = new Color[10, 20];
 
         public Block(Color colour, Point pos, IBoard board)
         {
             this.board = board;
-            this.colour = colour;
+            this.color = colour;
             this.pos = pos;
         }
 
         public Color Colour
         {
-            get { return colour; }
+            get { return color; }
         }
 
         public Point Position
