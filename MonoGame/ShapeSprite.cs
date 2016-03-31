@@ -32,7 +32,7 @@ namespace MonoGame
         //To Render
         private Texture2D filledBlock;
 
-        public ShapeSprite(Game game, IBoard board, Score score)
+        public ShapeSprite(Game game, Score score)
             : base(game)
         {
             this.game = game;
@@ -53,7 +53,6 @@ namespace MonoGame
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             filledBlock = game.Content.Load<Texture2D>("FilledBlock");
-            shape = new Shape(filledBlock.Width, filledBlock.Height, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, 5);
             base.LoadContent();
         }
 
@@ -69,7 +68,7 @@ namespace MonoGame
             if (newState.IsKeyDown(Keys.Right))
             {
                 // If not down last update, key has just been pressed.
-                if (!oldState.IsKeyDown(Keys.Right))
+                if (!oldstate.IsKeyDown(Keys.Right))
                 {
                     shape.MoveRight();
                     counterMoveDown = 0; //reset counter with every new keystroke
@@ -83,7 +82,7 @@ namespace MonoGame
             }
             else if (newState.IsKeyDown(Keys.Left))
             {
-                if (!oldState.IsKeyDown(Keys.Left))
+                if (!oldstate.IsKeyDown(Keys.Left))
                 {
                     shape.MoveLeft();
                     counterMoveDown = 0;
@@ -97,7 +96,7 @@ namespace MonoGame
             }
             // Improve/change the code above to also check forKeys.Left
             // Once finished checking all keys, update old state.
-            oldState = newState;
+            oldstate = newState;
         }
     }
 }
