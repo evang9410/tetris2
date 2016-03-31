@@ -37,7 +37,8 @@ namespace MonoGame
             emptyBlock = game.Content.Load<Texture2D>("EmptyBlock");
             filledBlock = game.Content.Load<Texture2D>("FilledBlock");
 
-            board = new Board();
+            //score font
+            //board = new Board();
 
             base.LoadContent();
         }
@@ -56,13 +57,19 @@ namespace MonoGame
                 {
                     if (board[x, y] != Color.Black)
                     {
-                        spriteBatch.Draw(filledBlock, new Vector2(x, y), board[x, y]);
+                        spriteBatch.Draw(filledBlock, new Vector2(150+x*20, y*20), Color.White);
                     }
                     else
                     {
                         spriteBatch.Draw(emptyBlock, new Vector2(x, y), board[x, y]);
                     }
                 }
+            }
+
+            //for loop to draw shape
+            for (int i = 0; i < board.Shape.Length; i++)
+            {
+                spriteBatch.Draw(filledBlock, new Vector2(board.Shape[i].Position.X * 20, board.Shape[i].Position.Y * 20), board.Shape[i].Colour);
             }
             spriteBatch.End();
             base.Draw(gameTime);

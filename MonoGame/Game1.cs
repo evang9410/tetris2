@@ -16,21 +16,12 @@ namespace MonoGame
         private ShapeSprite shapeSprite;
         private ScoreSprite scoreSprite;
 
-        Board board;
-        Score score;
 
         public Game1()
             : base()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-
-            graphics.PreferredBackBufferWidth = 256;
-            graphics.PreferredBackBufferHeight = 256;
-
-
-            board = new Board();
-            score = new Score(board);
             
         }
 
@@ -42,19 +33,23 @@ namespace MonoGame
         /// </summary>
         protected override void Initialize()
         {
-            
+            IBoard board = new Board();
+            Score score = new Score((Board)board);
             // TODO: Add your initialization logic here
-            spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
+            
             boardSprite = new BoardSprite(this, board);
-            shapeSprite = new ShapeSprite(this, board, score);
+            shapeSprite = new ShapeSprite(this, score);
             scoreSprite = new ScoreSprite(this, score);
 
             Components.Add(boardSprite);
-            Components.Add(scoreSprite);
-            Components.Add(shapeSprite);
-
-            
             base.Initialize();
+            Components.Add(scoreSprite);
+            base.Initialize();
+            Components.Add(shapeSprite);
+            base.Initialize();
+
+            board.GameOver += gameOver;
+
 
             
         }
@@ -69,7 +64,6 @@ namespace MonoGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            scoreSprite = new ScoreSprite(this,score);
             
         }
 
@@ -89,8 +83,8 @@ namespace MonoGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                //Exit();
+            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            //    Exit();
 
             // TODO: Add your update logic here
 
@@ -109,6 +103,14 @@ namespace MonoGame
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
+        }
+
+
+        private bool gameOver(bool isOver)
+        {
+            Components.Remove(shapeSprite);
+            isOver = true;
+            return isOver;
         }
 
     }
