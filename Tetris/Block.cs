@@ -43,7 +43,7 @@ namespace Tetris
 
         public bool tryMoveLeft()
         {
-            if (Position.X <= 0)
+            if (Position.X <= 0 || board[Position.X + 1, Position.Y] != Color.Black)
                 return false;
             else
                 return true;
@@ -61,7 +61,7 @@ namespace Tetris
 
         public bool tryMoveRight()
         {
-            if (Position.X + 1 >= board.GetLength(0))
+            if (Position.X + 1 >= board.GetLength(0) || board[Position.X + 1, Position.Y] != Color.Black)
                 return false;
             else
                 return true;
