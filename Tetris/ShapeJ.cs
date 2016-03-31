@@ -9,10 +9,8 @@ namespace Tetris
 {
     public class ShapeJ : Shape
     {
-        private Block[] bloacks = new Block[4];
         public ShapeJ(IBoard board): base(board)
         {
-            // Initial pos
             blocks[0] = new Block(Color.HotPink, new Point(1, 0), board);
             blocks[1] = new Block(Color.HotPink, new Point(1, 1), board);
             blocks[2] = new Block(Color.HotPink, new Point(1, 2), board);
@@ -20,6 +18,7 @@ namespace Tetris
 
             block = blocks;
         }
+
         public override void Reset()
         {
             blocks[0].Position = new Point(1, 0);

@@ -9,11 +9,9 @@ namespace Tetris
 {
     public class ShapeI : Shape
     {
-        private Block[] blocks = new Block[4];
         public ShapeI(IBoard board)
             : base(board)
         {
-            // Initial pos
             blocks[0] = new Block(Color.Aquamarine, new Point(0, 0), board);
             blocks[1] = new Block(Color.Aquamarine, new Point(0, 1), board);
             blocks[2] = new Block(Color.Aquamarine, new Point(0, 2), board);
@@ -21,6 +19,7 @@ namespace Tetris
             
             block = blocks;
         }
+
         public override void Reset()
         {
             blocks[0].Position = new Point(0, 0);

@@ -11,7 +11,6 @@ namespace Tetris
     {
         private IBoard board;
         protected Block[] block;
-        protected Point[,] rotationOffset;
         protected int currentRotation;
         public Shape(IBoard board)
         {
@@ -38,15 +37,6 @@ namespace Tetris
 
         public void MoveLeft() 
         {
-            /*for(int i = 0; i <block.Length;i++)
-            {
-                if (block[i].tryMoveLeft())
-                {
-                    block[i].MoveLeft();
-                }
-                else
-                    break;
-            }*/
             foreach (Block b in blocks)
             {
                 if (!b.tryMoveLeft())

@@ -7,13 +7,11 @@ using Microsoft.Xna.Framework;
 
 namespace Tetris
 {
-    public class ShapeT: Shape
+    public class ShapeT : Shape
     {
-        private Block[] blocks = new Block[4];
         public ShapeT(IBoard board)
             : base(board)
         {
-            // Initial pos
             blocks[0] = new Block(Color.Purple, new Point(0, 0), board);
             blocks[1] = new Block(Color.Purple, new Point(1, 0), board);
             blocks[2] = new Block(Color.Purple, new Point(2, 0), board);
@@ -21,6 +19,7 @@ namespace Tetris
 
             block = blocks;
         }
+
         public override void Reset()
         {
             blocks[0].Position = new Point(0, 0);
@@ -36,7 +35,6 @@ namespace Tetris
         {
             if (currentRotation == 0)
             {
-
                 blocks[0].Position = new Point(blocks[0].Position.X + 1, blocks[0].Position.Y);
                 blocks[1].Position = new Point(blocks[1].Position.X, blocks[1].Position.Y + 1);
                 blocks[2].Position = new Point(blocks[2].Position.X - 1, blocks[2].Position.Y + 2);
@@ -47,8 +45,6 @@ namespace Tetris
             }
             else if (currentRotation == 1)
             {
-                
-
                 blocks[0].Position = new Point(blocks[0].Position.X + 1, blocks[0].Position.Y + 1);
                 blocks[1].Position = new Point(blocks[1].Position.X, blocks[1].Position.Y);
                 blocks[2].Position = new Point(blocks[2].Position.X - 1, blocks[2].Position.Y - 1);
@@ -59,7 +55,6 @@ namespace Tetris
             }
             else if (currentRotation == 2)
             {
-                
                 blocks[0].Position = new Point(blocks[0].Position.X - 2, blocks[0].Position.Y + 1);
                 blocks[1].Position = new Point(blocks[1].Position.X - 1, blocks[1].Position.Y);
                 blocks[2].Position = new Point(blocks[2].Position.X, blocks[2].Position.Y - 1);

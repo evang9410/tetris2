@@ -10,6 +10,5 @@ namespace Tetris
     {
         void DeployNewShape();
         IShape CurrentShape { get; }
-
     }
 }

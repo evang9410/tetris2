@@ -23,10 +23,10 @@ namespace Tetris
         private Point pos;
         private Color[,] col = new Color[10, 20];
 
-        public Block(Color colour, Point pos, IBoard board)
+        public Block(Color color, Point pos, IBoard board)
         {
             this.board = board;
-            this.color = colour;
+            this.color = color;
             this.pos = pos;
         }
 
@@ -101,10 +101,6 @@ namespace Tetris
         public void Rotate(Point offset)
         {
             pos = new Point(offset.X - pos.X - 1, offset.Y - pos.Y - 1);
-        }
-        public override bool Equals(object obj)
-        {
-            return true;//base.Equals(obj);
         }
     }
 }
