@@ -12,6 +12,7 @@ namespace MonoGame
     class ScoreSprite: DrawableGameComponent
     {
         private Score score;
+
         private Game game;
         private SpriteBatch spriteBatch;
 
@@ -26,7 +27,6 @@ namespace MonoGame
 
         public override void Initialize()
         {
-            
             base.Initialize();
         }
         protected override void LoadContent()

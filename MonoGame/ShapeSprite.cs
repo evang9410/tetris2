@@ -15,21 +15,22 @@ namespace MonoGame
 {
     class ShapeSprite : DrawableGameComponent
     {
-        private Shape shape;
+        private IShape shape;
+
         private Game game;
         private SpriteBatch spriteBatch;
 
-        //To Render
-        private Texture2D filledBlock;
-
         //for movedown frequency
         private Score score;
-        private int counter;
+        private int counterMoveDown;
 
         //for keyboard input
         private KeyboardState oldstate;
         private int counterInput;
         private int threshold;
+
+        //To Render
+        private Texture2D filledBlock;
 
         public ShapeSprite(Game game, IBoard board, Score score)
             : base(game)
@@ -39,20 +40,19 @@ namespace MonoGame
         }
         public Shape Shape
         {
-            get { return shape; }
+            get { return (Shape)shape; }
         }
 
         public override void Initialize()
         {
-            //oldstate = new KeyboardState();
             oldstate = Keyboard.GetState();
-            threshold = 6; ///i have no idea what the number is for
+            threshold = 6;
             base.Initialize();
         }
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            filledBlock = game.Content.Load<Texture2D>("shape");
+            filledBlock = game.Content.Load<Texture2D>("FilledBlock");
             shape = new Shape(filledBlock.Width, filledBlock.Height, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, 5);
             base.LoadContent();
         }
@@ -62,6 +62,7 @@ namespace MonoGame
             checkInput();
             base.Update(gameTime);
         }
+
         private void checkInput()
         {
             KeyboardState newState = Keyboard.GetState();
@@ -71,12 +72,12 @@ namespace MonoGame
                 if (!oldState.IsKeyDown(Keys.Right))
                 {
                     shape.MoveRight();
-                    counter = 0; //reset counter with every new keystroke
+                    counterMoveDown = 0; //reset counter with every new keystroke
                 }
                 else
                 {
-                    counter++;
-                    if (counter > threshold)
+                    counterMoveDown++;
+                    if (counterMoveDown > threshold)
                         shape.MoveRight();
                 }
             }
@@ -85,19 +86,18 @@ namespace MonoGame
                 if (!oldState.IsKeyDown(Keys.Left))
                 {
                     shape.MoveLeft();
-                    counter = 0;
+                    counterMoveDown = 0;
                 }
                 else
                 {
-                    counter++;
-                    if (counter > threshold)
+                    counterMoveDown++;
+                    if (counterMoveDown > threshold)
                         shape.MoveLeft();
                 }
             }
             // Improve/change the code above to also check forKeys.Left
             // Once finished checking all keys, update old state.
             oldState = newState;
-
         }
     }
 }
