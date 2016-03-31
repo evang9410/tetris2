@@ -38,7 +38,7 @@ namespace MonoGame
             // TODO: Add your initialization logic here
             
             boardSprite = new BoardSprite(this, board);
-            shapeSprite = new ShapeSprite(this, score);
+            shapeSprite = new ShapeSprite(this, board, score);
             scoreSprite = new ScoreSprite(this, score);
 
             Components.Add(boardSprite);
