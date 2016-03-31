@@ -27,7 +27,7 @@ namespace Tetris
         public void DeployNewShape()
         {
             int shape = rnd.Next(0, 7);
-            shape = 0;
+            
             switch (shape)
             {
                 case 0: 
