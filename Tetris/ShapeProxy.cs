@@ -17,7 +17,6 @@ namespace Tetris
         {
             this.board = board;
             rnd = new Random();
-            
         }
 
         public IShape CurrentShape
@@ -28,38 +27,33 @@ namespace Tetris
         public void DeployNewShape()
         {
             int shape = rnd.Next(0, 7);
-            
+
             switch (shape)
             {
                 case 0: 
                     current = new ShapeI(board);
-                    current.JoinPile += onJoinPile;
                     break;
                 case 1:
                     current = new ShapeJ(board);
-                    current.JoinPile += onJoinPile;
                     break;
                 case 2:
                     current = new ShapeL(board);
-                    current.JoinPile += onJoinPile;
                     break;
                 case 3:
                     current = new ShapeO(board);
-                    current.JoinPile += onJoinPile;
                     break;
                 case 4:
                     current = new ShapeS(board);
-                    current.JoinPile += onJoinPile;
                     break;
                 case 5:
                     current = new ShapeT(board);
-                    current.JoinPile += onJoinPile;
                     break;
                 case 6:
                     current = new ShapeZ(board);
-                    current.JoinPile += onJoinPile;
                     break;
             }
+
+            current.JoinPile += onJoinPile;
         }
 
         public int Length

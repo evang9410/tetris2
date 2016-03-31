@@ -62,53 +62,39 @@ namespace Tetris
 
         private int linesToClear()
         {
-           //call method that adds current shape to board
-            addToPile(shape);
-            int x = board.GetLength(0);
-            int y = board.GetLength(1);
-            int colored_blocks = 0;
             int lines = 0;
-            for (; x >= 0 ; x--)
+
+            for (int i = board.GetLength(1) - 1; i > 0; i--)
             {
-               
-                for (y = board.GetLength(1); y >= 0; y--)
-                {
-                    if (board[x, y] != Color.Black)
-                    {
-                        colored_blocks++;
-                        
-                    }
-                }
-                if (colored_blocks == board.GetLength(1))
+                if (tryClearLine(i))
                 {
                     lines++;
-                    clearLine(x);
-
+                    i++;
                 }
-                colored_blocks = 0;
             }
-            if(lines >= 1)
-                onLinesCleared(lines);
-            
-           shapeFactory.DeployNewShape();
-           return lines;
+
+            return lines;
         }
 
-        private void clearLine(int x)
+        private bool tryClearLine(int y)
         {
-            for (; x >= 0; x--)
+            for (int i = 0; i < board.GetLength(0); i++)
             {
-                for (int y = 0; y < board.GetLength(1); y++)
+                if (board[i, y] == Color.Black)
                 {
-                    if (x == 0)
-                    {
-                        board[x, y] = Color.Black;
-                    }
-                    else
-                        //unsure if its x - 1 or y - 1
-                        board[x, y] = board[x - 1, y];
+                    return false;
                 }
             }
+
+            for (int i = 0; i < board.GetLength(0); i++)
+            {
+                for (int j = y; j > 0; j--)
+                {
+                    board[i, j] = board[i, j - 1];
+                }
+            }
+
+            return true;
         }
 
         IShape IBoard.Shape
@@ -123,26 +109,40 @@ namespace Tetris
 
         private void addToPile(IShape shape)
         {
-            bool placeable = true;
+            for (int i = 0; i < this.shape.Length; i++)
+            {
+                board[shape[i].Position.X, shape[i].Position.Y] = shape[i].Color;
+            }
 
-            for(int i = 0; i < shape.Length; i++)
+            onLinesCleared(linesToClear());
+
+            shapeFactory.DeployNewShape();
+            this.shape = shapeFactory.CurrentShape;
+
+            gameOver();
+        }
+
+        private void gameOver()
+        {
+            bool placeable = true;
+            for (int i = 0; i < shape.Length; i++)
             {
                 if (!board[shape[i].Position.X, shape[i].Position.Y].Equals(Color.Black))
                 {
                     placeable = false;
-                    this.GameOver(!placeable);
                 }
             }
-
-            if (placeable)
+            if (!placeable)
             {
-                linesToClear();
-                
-                shapeFactory.DeployNewShape();
-                this.shape = (IShape)shapeFactory;
+                onGameOver();
+            }
+        }
 
-                shape.JoinPile += addToPile;
-                
+        protected virtual void onGameOver()
+        {
+            if (GameOver != null)
+            {
+                GameOver(true);
             }
         }
     }

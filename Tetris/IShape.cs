@@ -9,8 +9,6 @@ namespace Tetris
     public delegate void JoinPileHandler(IShape shape);
     public interface IShape
     {
-        
-
         int Length
         {
             get; 

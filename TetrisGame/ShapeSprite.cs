@@ -43,9 +43,9 @@ namespace MonoGame
         public override void Initialize()
         {
             oldstate = Keyboard.GetState();
-            threshold = 6;
-            base.Initialize();
+            threshold = 10;
             freq = 0;
+            base.Initialize(); 
         }
         protected override void LoadContent()
         {
@@ -58,8 +58,7 @@ namespace MonoGame
         {
             checkInput();
 
-            
-            if (freq > threshold)
+            if (freq > (11 - score.Level) * 3)
             {
                 freq = 0;
                 board.Shape.MoveDown();
@@ -77,7 +76,7 @@ namespace MonoGame
             spriteBatch.Begin();
             for (int i = 0; i < board.Shape.Length; i++)
             {
-                spriteBatch.Draw(filledBlock, new Vector2(board.Shape[i].Position.X * 20 + 150, board.Shape[i].Position.Y * 20), board.Shape[i].Colour);
+                spriteBatch.Draw(filledBlock, new Vector2(board.Shape[i].Position.X * 20 + 2, board.Shape[i].Position.Y * 20 + 2), board.Shape[i].Color);
             }
             spriteBatch.End();
             base.Draw(gameTime);
@@ -86,22 +85,26 @@ namespace MonoGame
         private void checkInput()
         {
             KeyboardState newState = Keyboard.GetState();
+
             if (newState.IsKeyDown(Keys.Right))
             {
-                // If not down last update, key has just been pressed.
                 if (!oldstate.IsKeyDown(Keys.Right))
                 {
                     board.Shape.MoveRight();
-                    counterMoveDown = 0; //reset counter with every new keystroke
+                    counterMoveDown = 0;
                 }
                 else
                 {
                     counterMoveDown++;
+
                     if (counterMoveDown > threshold)
+                    {
                         board.Shape.MoveRight();
+                    }
                 }
             }
-            else if (newState.IsKeyDown(Keys.Left))
+            
+            if (newState.IsKeyDown(Keys.Left))
             {
                 if (!oldstate.IsKeyDown(Keys.Left))
                 {
@@ -111,62 +114,40 @@ namespace MonoGame
                 else
                 {
                     counterMoveDown++;
+
                     if (counterMoveDown > threshold)
+                    {
                         board.Shape.MoveLeft();
+                    }   
                 }
             }
-            else if (newState.IsKeyDown(Keys.Down))
+            
+            if (newState.IsKeyDown(Keys.Down))
             {
                 if (!oldstate.IsKeyDown(Keys.Down))
                 {
                     board.Shape.Drop();
-                    counterMoveDown = 0; //reset counter with every new keystroke
+                    counterMoveDown = 0;
                 }
                 else
                 {
                     counterMoveDown++;
-                    if (counterMoveDown > threshold)
-                        board.Shape.Drop();
                 }
-
             }
-
-            else if (newState.IsKeyDown(Keys.LeftShift))
-            {
-                if (!oldstate.IsKeyDown(Keys.LeftShift))
-                {
-                    board.Shape.Rotate();
-                    counterMoveDown = 0; //reset counter with every new keystroke
-                }
-                else
-                {
-                    counterMoveDown++;
-                    if (counterMoveDown > threshold)
-                        board.Shape.Rotate();
-                }
-
-            }
-
-            else if (newState.IsKeyDown(Keys.Space))
+            
+            if (newState.IsKeyDown(Keys.Space))
             {
                 if (!oldstate.IsKeyDown(Keys.Space))
                 {
-                    board.Shape.Drop();
-                    counterMoveDown = 0; //reset counter with every new keystroke
+                    board.Shape.Rotate();
+                    counterMoveDown = 0;
                 }
                 else
                 {
                     counterMoveDown++;
-                    if (counterMoveDown > threshold)
-                        board.Shape.Drop();
                 }
-
             }
 
-
-
-            // Improve/change the code above to also check forKeys.Left
-            // Once finished checking all keys, update old state.
             oldstate = newState;
         }
     }

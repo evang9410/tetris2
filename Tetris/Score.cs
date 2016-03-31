@@ -10,11 +10,14 @@ namespace Tetris
     {
         private int level;
         private int lines;
-        private int scores;
+        private int points;
 
         public Score(Board board)
         {    
             board.LinesCleared += incrementLinesCleared;
+            level = 1;
+            lines = 0;
+            points = 0;
         }
         public int Level
         {
@@ -24,15 +27,15 @@ namespace Tetris
         {
             get { return lines; }
         }
-        public int Scores
+        public int Points
         {
-            get { return scores; }
+            get { return points; }
         }
 
         public void incrementLinesCleared(int num)
         {
             lines += num;
-            scores += num * num;
+            points += num * num;
             level = Math.Min(lines /10 + 1, 10);
         }
          

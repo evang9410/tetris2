@@ -45,7 +45,11 @@ namespace MonoGame
         public override void Draw(GameTime gameTime)
         {
             spriteBatch.Begin();
-            spriteBatch.DrawString(font, "Score: " + score, new Vector2(0, 0), Color.White);
+            
+            spriteBatch.DrawString(font, "Level: " + score.Level, new Vector2(204, 2), Color.Black);
+            spriteBatch.DrawString(font, "Lines: " + score.Lines, new Vector2(204, 22), Color.Black);
+            spriteBatch.DrawString(font, "Points: " + score.Points, new Vector2(204, 42), Color.Black);
+
             spriteBatch.End();
             base.Draw(gameTime);
         }

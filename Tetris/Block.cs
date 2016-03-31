@@ -30,7 +30,7 @@ namespace Tetris
             this.pos = pos;
         }
 
-        public Color Colour
+        public Color Color
         {
             get { return color; }
         }

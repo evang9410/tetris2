@@ -23,6 +23,8 @@ namespace MonoGame
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             
+            graphics.PreferredBackBufferHeight = 404;
+            graphics.PreferredBackBufferWidth = 304;
         }
 
         /// <summary>
@@ -94,7 +96,7 @@ namespace MonoGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(new Color(80, 80, 80));
             var fps = 1 / gameTime.ElapsedGameTime.TotalSeconds;
 
             // TODO: Add your drawing code here
