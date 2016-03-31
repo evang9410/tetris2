@@ -48,16 +48,36 @@ namespace Tetris
             else
                 return true;
         }
+        
+        
+
+        public void MoveLeft()
+        {
+            if (tryMoveLeft())
+            {
+                pos.X -= 1;
+            }
+        }
+
         public bool tryMoveRight()
         {
-            if (Position.X >= 10)
+            if (Position.X + 1 >= board.GetLength(0))
                 return false;
             else
                 return true;
         }
+
+        public void MoveRight()
+        {
+            if (tryMoveRight())
+            {
+                pos.X += 1;
+            }
+        }
+
         public bool tryMoveDown()
         {
-            if (Position.Y >= 19)
+            if (Position.Y + 1 >= board.GetLength(1))
             {
                 return false;
             }
@@ -68,26 +88,6 @@ namespace Tetris
                 return true;
             else
                 return false;
-        }
-        public void TryRotate(Point offset)
-        {
-
-        }
-
-        public void MoveLeft()
-        {
-            if (tryMoveLeft())
-            {
-                pos.X -= 1;
-            }
-        }
-
-        public void MoveRight()
-        {
-            if (tryMoveRight())
-            {
-                pos.X += 1;
-            }
         }
 
         public void MoveDown()

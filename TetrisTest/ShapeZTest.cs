@@ -17,28 +17,28 @@ namespace TetrisTest
             ShapeZ szE = new ShapeZ(board);
 
             // First rotation
-            szE.blocks[0] = new Block(Color.DarkGreen, new Point(0, 0), board);
-            szE.blocks[1] = new Block(Color.DarkGreen, new Point(1, 0), board);
-            szE.blocks[2] = new Block(Color.DarkGreen, new Point(1, 1), board);
-            szE.blocks[3] = new Block(Color.DarkGreen, new Point(2, 1), board);
+            szE.Blocks[0] = new Block(Color.DarkGreen, new Point(0, 0), board);
+            szE.Blocks[1] = new Block(Color.DarkGreen, new Point(1, 0), board);
+            szE.Blocks[2] = new Block(Color.DarkGreen, new Point(1, 1), board);
+            szE.Blocks[3] = new Block(Color.DarkGreen, new Point(2, 1), board);
 
-            for (int i = 0; i < sz.blocks.Length; i++)
+            for (int i = 0; i < sz.Blocks.Length; i++)
             {
-                Assert.AreEqual(szE.blocks[i].Position, sz.blocks[i].Position);
+                Assert.AreEqual(szE.Blocks[i].Position, sz.Blocks[i].Position);
             }
 
             // Rotating
             sz.Rotate();
 
             // Second rotation
-            szE.blocks[0] = new Block(Color.DarkGreen, new Point(0, 1), board);
-            szE.blocks[1] = new Block(Color.DarkGreen, new Point(0, 2), board);
-            szE.blocks[2] = new Block(Color.DarkGreen, new Point(1, 1), board);
-            szE.blocks[3] = new Block(Color.DarkGreen, new Point(1, 0), board);
+            szE.Blocks[0] = new Block(Color.DarkGreen, new Point(0, 1), board);
+            szE.Blocks[1] = new Block(Color.DarkGreen, new Point(0, 2), board);
+            szE.Blocks[2] = new Block(Color.DarkGreen, new Point(1, 1), board);
+            szE.Blocks[3] = new Block(Color.DarkGreen, new Point(1, 0), board);
 
-            for (int i = 0; i < sz.blocks.Length; i++)
+            for (int i = 0; i < sz.Blocks.Length; i++)
             {
-                Assert.AreEqual(szE.blocks[i].Position, sz.blocks[i].Position);
+                Assert.AreEqual(szE.Blocks[i].Position, sz.Blocks[i].Position);
             }
         }
 
@@ -53,9 +53,9 @@ namespace TetrisTest
             sz.Rotate();
             sz.Reset();
 
-            for (int i = 0; i < sz.blocks.Length; i++)
+            for (int i = 0; i < sz.Blocks.Length; i++)
             {
-                Assert.AreEqual(szE.blocks[i].Position, sz.blocks[i].Position);
+                Assert.AreEqual(szE.Blocks[i].Position, sz.Blocks[i].Position);
             }
         }
     }

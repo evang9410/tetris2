@@ -23,7 +23,9 @@ namespace Tetris
                     board[x, y] = Color.Black;
                 }
             }
+            
             shapeFactory = new ShapeProxy(this);
+            shapeFactory.DeployNewShape();
             this.shape = (IShape)shapeFactory;
 
             shape.JoinPile += addToPile;
@@ -121,15 +123,11 @@ namespace Tetris
 
         private void addToPile(IShape shape)
         {
-            int offsetX = board.GetLength(0) / 2;
-            int offsetY = board.GetLength(1) / 2;
             bool placeable = true;
 
             for(int i = 0; i < shape.Length; i++)
             {
-                shape[i].Position = new Point(offsetX, offsetY);
-
-                if (!board[shape[i].Position.X + offsetX, shape[i].Position.Y + offsetY].Equals(Color.Black))
+                if (!board[shape[i].Position.X, shape[i].Position.Y].Equals(Color.Black))
                 {
                     placeable = false;
                     this.GameOver(!placeable);
@@ -139,8 +137,12 @@ namespace Tetris
             if (placeable)
             {
                 linesToClear();
-                this.shape = shape;
-                this.shape.JoinPile += addToPile; 
+                
+                shapeFactory.DeployNewShape();
+                this.shape = (IShape)shapeFactory;
+
+                shape.JoinPile += addToPile;
+                
             }
         }
     }

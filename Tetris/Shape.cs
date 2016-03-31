@@ -10,27 +10,32 @@ namespace Tetris
     public abstract class Shape: IShape
     {
         private IBoard board;
-        protected Block[] block;
+        protected Block[] blocks;
         protected int currentRotation;
         public Shape(IBoard board)
         {
             this.board = board;
-            block = new Block[4];
+            blocks = new Block[4];
             currentRotation = 0;
         }
-        public Block[] blocks
+        public Block[] Blocks
         {
-            get { return block; }
-            set { block = value; }
+            get { return blocks; }
+            set { blocks = value; }
+        }
+
+        public IBoard Board
+        {
+            get { return board; }
         }
         public int Length
         {
-            get { return block.Length; }
+            get { return blocks.Length; }
         }
 
         public Block this[int i]
         {
-            get { return block[i]; }
+            get { return blocks[i]; }
         }
 
         public event JoinPileHandler JoinPile;
@@ -66,13 +71,16 @@ namespace Tetris
             foreach (Block b in blocks)
             {
                 if (!b.tryMoveDown())
+                {
+                    onJoinPile(this);
                     return;
+                }
             }
+
             foreach (Block b in blocks)
             {
                 b.MoveDown();
-            }
-            
+            }   
         }
 
         public void Drop() 
@@ -101,5 +109,12 @@ namespace Tetris
         public abstract void Rotate();
 
         public abstract void Reset();
+        protected virtual void onJoinPile(IShape current)
+        {
+            if (JoinPile != null)
+            {
+                JoinPile(current);
+            }
+        }
     }
 }

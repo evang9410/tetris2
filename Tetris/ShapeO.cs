@@ -12,23 +12,20 @@ namespace Tetris
         public ShapeO(IBoard board)
             : base(board)
         {
-            blocks[0] = new Block(Color.Yellow, new Point(0, 0), board);
-            blocks[1] = new Block(Color.Yellow, new Point(1, 0), board);
-            blocks[2] = new Block(Color.Yellow, new Point(0, 1), board);
-            blocks[3] = new Block(Color.Yellow, new Point(1, 1), board);
-
-            block = blocks;
+            Blocks[0] = new Block(Color.Yellow, new Point(Board.GetLength(0) / 2, 0), Board);
+            Blocks[1] = new Block(Color.Yellow, new Point(Board.GetLength(0) / 2 + 1, 0), Board);
+            Blocks[2] = new Block(Color.Yellow, new Point(Board.GetLength(0) / 2, 1), Board);
+            Blocks[3] = new Block(Color.Yellow, new Point(Board.GetLength(0) / 2 + 1, 1), Board);
         }
 
         public override void Reset()
         {
-            blocks[0].Position = new Point(0, 0);
-            blocks[1].Position = new Point(1, 0);
-            blocks[2].Position = new Point(0, 1);
-            blocks[3].Position = new Point(1, 1);
+            Blocks[0] = new Block(Color.Yellow, new Point(Board.GetLength(0) / 2, 0), Board);
+            Blocks[1] = new Block(Color.Yellow, new Point(Board.GetLength(0) / 2 + 1, 0), Board);
+            Blocks[2] = new Block(Color.Yellow, new Point(Board.GetLength(0) / 2, 1), Board);
+            Blocks[3] = new Block(Color.Yellow, new Point(Board.GetLength(0) / 2 + 1, 1), Board);
 
             currentRotation = 0;
-            block = blocks;
         }
 
         public override void Rotate()

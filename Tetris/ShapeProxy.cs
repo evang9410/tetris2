@@ -28,36 +28,36 @@ namespace Tetris
         public void DeployNewShape()
         {
             int shape = rnd.Next(0, 7);
-
+            
             switch (shape)
             {
                 case 0: 
                     current = new ShapeI(board);
-                    onJoinPile(current);
+                    current.JoinPile += onJoinPile;
                     break;
                 case 1:
                     current = new ShapeJ(board);
-                    onJoinPile(current);
+                    current.JoinPile += onJoinPile;
                     break;
                 case 2:
                     current = new ShapeL(board);
-                    onJoinPile(current);
+                    current.JoinPile += onJoinPile;
                     break;
                 case 3:
                     current = new ShapeO(board);
-                    onJoinPile(current);
+                    current.JoinPile += onJoinPile;
                     break;
                 case 4:
                     current = new ShapeS(board);
-                    onJoinPile(current);
+                    current.JoinPile += onJoinPile;
                     break;
                 case 5:
                     current = new ShapeT(board);
-                    onJoinPile(current);
+                    current.JoinPile += onJoinPile;
                     break;
                 case 6:
                     current = new ShapeZ(board);
-                    onJoinPile(current);
+                    current.JoinPile += onJoinPile;
                     break;
             }
         }
@@ -94,10 +94,7 @@ namespace Tetris
 
         public void MoveDown()
         {
-            for (int i = 0; i < current.Length; i++)
-            {
-                current[i].MoveDown();
-            }
+            current.MoveDown();
         }
 
         public void Drop()

@@ -20,56 +20,56 @@ namespace TetrisTest
             sj.Rotate();
 
             // First rotation
-            sjE.blocks[0] = new Block(Color.HotPink, new Point(2, 1), board);
-            sjE.blocks[1] = new Block(Color.HotPink, new Point(1, 1), board);
-            sjE.blocks[2] = new Block(Color.HotPink, new Point(0, 1), board);
-            sjE.blocks[3] = new Block(Color.HotPink, new Point(0, 0), board);
+            sjE.Blocks[0] = new Block(Color.HotPink, new Point(2, 1), board);
+            sjE.Blocks[1] = new Block(Color.HotPink, new Point(1, 1), board);
+            sjE.Blocks[2] = new Block(Color.HotPink, new Point(0, 1), board);
+            sjE.Blocks[3] = new Block(Color.HotPink, new Point(0, 0), board);
 
-            for (int i = 0; i < sj.blocks.Length; i++)
+            for (int i = 0; i < sj.Blocks.Length; i++)
             {
-                Assert.AreEqual(sjE.blocks[i].Position, sj.blocks[i].Position);
+                Assert.AreEqual(sjE.Blocks[i].Position, sj.Blocks[i].Position);
             }
             
             // Rotating
             sj.Rotate();
 
             // Second rotation
-            sjE.blocks[0] = new Block(Color.HotPink, new Point(0, 2), board);
-            sjE.blocks[1] = new Block(Color.HotPink, new Point(0, 1), board);
-            sjE.blocks[2] = new Block(Color.HotPink, new Point(0, 0), board);
-            sjE.blocks[3] = new Block(Color.HotPink, new Point(1, 0), board);
+            sjE.Blocks[0] = new Block(Color.HotPink, new Point(0, 2), board);
+            sjE.Blocks[1] = new Block(Color.HotPink, new Point(0, 1), board);
+            sjE.Blocks[2] = new Block(Color.HotPink, new Point(0, 0), board);
+            sjE.Blocks[3] = new Block(Color.HotPink, new Point(1, 0), board);
 
-            for (int i = 0; i < sj.blocks.Length; i++)
+            for (int i = 0; i < sj.Blocks.Length; i++)
             {
-                Assert.AreEqual(sjE.blocks[i].Position, sj.blocks[i].Position);
+                Assert.AreEqual(sjE.Blocks[i].Position, sj.Blocks[i].Position);
             }
             
             // Rotating
             sj.Rotate();
             
             // Third rotation
-            sjE.blocks[0] = new Block(Color.HotPink, new Point(0, 0), board);
-            sjE.blocks[1] = new Block(Color.HotPink, new Point(1, 0), board);
-            sjE.blocks[2] = new Block(Color.HotPink, new Point(2, 0), board);
-            sjE.blocks[3] = new Block(Color.HotPink, new Point(2, 1), board);
+            sjE.Blocks[0] = new Block(Color.HotPink, new Point(0, 0), board);
+            sjE.Blocks[1] = new Block(Color.HotPink, new Point(1, 0), board);
+            sjE.Blocks[2] = new Block(Color.HotPink, new Point(2, 0), board);
+            sjE.Blocks[3] = new Block(Color.HotPink, new Point(2, 1), board);
 
-            for (int i = 0; i < sj.blocks.Length; i++)
+            for (int i = 0; i < sj.Blocks.Length; i++)
             {
-                Assert.AreEqual(sjE.blocks[i].Position, sj.blocks[i].Position);
+                Assert.AreEqual(sjE.Blocks[i].Position, sj.Blocks[i].Position);
             }
             
             // Rotating
             sj.Rotate();
 
             // Fourth rotation (initial)
-            sjE.blocks[0] = new Block(Color.HotPink, new Point(1, 0), board);
-            sjE.blocks[1] = new Block(Color.HotPink, new Point(1, 1), board);
-            sjE.blocks[2] = new Block(Color.HotPink, new Point(1, 2), board);
-            sjE.blocks[3] = new Block(Color.HotPink, new Point(0, 2), board);
+            sjE.Blocks[0] = new Block(Color.HotPink, new Point(1, 0), board);
+            sjE.Blocks[1] = new Block(Color.HotPink, new Point(1, 1), board);
+            sjE.Blocks[2] = new Block(Color.HotPink, new Point(1, 2), board);
+            sjE.Blocks[3] = new Block(Color.HotPink, new Point(0, 2), board);
 
-            for (int i = 0; i < sj.blocks.Length; i++)
+            for (int i = 0; i < sj.Blocks.Length; i++)
             {
-                Assert.AreEqual(sjE.blocks[i].Position, sj.blocks[i].Position);
+                Assert.AreEqual(sjE.Blocks[i].Position, sj.Blocks[i].Position);
             }
         }
 
@@ -84,9 +84,9 @@ namespace TetrisTest
             sj.Rotate();
             sj.Reset();
 
-            for (int i = 0; i < sj.blocks.Length; i++)
+            for (int i = 0; i < sj.Blocks.Length; i++)
             {
-                Assert.AreEqual(sjE.blocks[i].Position, sj.blocks[i].Position);
+                Assert.AreEqual(sjE.Blocks[i].Position, sj.Blocks[i].Position);
             }
         }
     }
