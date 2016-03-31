@@ -43,7 +43,7 @@ namespace Tetris
 
         public bool tryMoveLeft()
         {
-            if (Position.X <= 0 || board[Position.X + 1, Position.Y] != Color.Black)
+            if (Position.X <= 0 || board[Position.X - 1, Position.Y] != Color.Black)
                 return false;
             else
                 return true;
@@ -61,10 +61,18 @@ namespace Tetris
 
         public bool tryMoveRight()
         {
-            if (Position.X + 1 >= board.GetLength(0) || board[Position.X + 1, Position.Y] != Color.Black)
+            try
+            {
+                if (Position.X + 1 > board.GetLength(0))
+                    throw new System.IndexOutOfRangeException();
+                if (board[Position.X + 1, Position.Y] != Color.Black)
+                    throw new System.IndexOutOfRangeException();
+            }
+            catch(System.IndexOutOfRangeException)
+            {
                 return false;
-            else
-                return true;
+            }
+            return true;
         }
 
         public void MoveRight()

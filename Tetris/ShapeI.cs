@@ -32,22 +32,35 @@ namespace Tetris
         {
             if (currentRotation == 0)
             {
-                Blocks[0].Position = new Point(Blocks[0].Position.X, Blocks[0].Position.Y);
-                Blocks[1].Position = new Point(Blocks[1].Position.X + 1, Blocks[1].Position.Y - 1);
-                Blocks[2].Position = new Point(Blocks[2].Position.X + 2, Blocks[2].Position.Y - 2);
-                Blocks[3].Position = new Point(Blocks[3].Position.X + 3, Blocks[3].Position.Y - 3);
-
+                try
+                {
+                    Blocks[0].Position = new Point(Blocks[0].Position.X, Blocks[0].Position.Y);
+                    Blocks[1].Position = new Point(Blocks[1].Position.X + 1, Blocks[1].Position.Y - 1);
+                    Blocks[2].Position = new Point(Blocks[2].Position.X + 2, Blocks[2].Position.Y - 2);
+                    Blocks[3].Position = new Point(Blocks[3].Position.X + 3, Blocks[3].Position.Y - 3);
+                }
+                catch (System.IndexOutOfRangeException)
+                {
+                    return;
+                }
                 currentRotation = 1;
             }
             else if (currentRotation == 1)
             {
-                Blocks[0].Position = new Point(Blocks[0].Position.X, Blocks[0].Position.Y);
-                Blocks[1].Position = new Point(Blocks[1].Position.X - 1, Blocks[1].Position.Y + 1);
-                Blocks[2].Position = new Point(Blocks[2].Position.X - 2, Blocks[2].Position.Y + 2);
-                Blocks[3].Position = new Point(Blocks[3].Position.X - 3, Blocks[3].Position.Y + 3);
-
+                try
+                {
+                    Blocks[0].Position = new Point(Blocks[0].Position.X, Blocks[0].Position.Y);
+                    Blocks[1].Position = new Point(Blocks[1].Position.X - 1, Blocks[1].Position.Y + 1);
+                    Blocks[2].Position = new Point(Blocks[2].Position.X - 2, Blocks[2].Position.Y + 2);
+                    Blocks[3].Position = new Point(Blocks[3].Position.X - 3, Blocks[3].Position.Y + 3);
+                }
+                catch (System.IndexOutOfRangeException)
+                {
+                    return;
+                }
                 currentRotation = 0;
             }            
         }
+
     }
 }
