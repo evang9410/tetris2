@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 namespace Tetris {
     public class ShapeJ : Shape {
         public ShapeJ(IBoard board) : base(board) {
+            // Init
             Blocks[0] = new Block(Color.HotPink, new Point(Board.GetLength(0) / 2 + 1, 0), Board);
             Blocks[1] = new Block(Color.HotPink, new Point(Board.GetLength(0) / 2 + 1, 1), Board);
             Blocks[2] = new Block(Color.HotPink, new Point(Board.GetLength(0) / 2 + 1, 2), Board);
@@ -15,6 +16,7 @@ namespace Tetris {
         }
 
         public override void Reset() {
+            // Same as init
             Blocks[0] = new Block(Color.HotPink, new Point(Board.GetLength(0) / 2 + 1, 0), Board);
             Blocks[1] = new Block(Color.HotPink, new Point(Board.GetLength(0) / 2 + 1, 1), Board);
             Blocks[2] = new Block(Color.HotPink, new Point(Board.GetLength(0) / 2 + 1, 2), Board);
@@ -24,6 +26,7 @@ namespace Tetris {
         }
 
         public override void Rotate() {
+            // Adding to the current block position to move them to the desired position
             if (currentRotation == 0 && Blocks[0].Position.X <= Board.GetLength(0) - 3) {
                 Blocks[0].Position = new Point(Blocks[0].Position.X + 1, Blocks[0].Position.Y + 1);
                 Blocks[1].Position = new Point(Blocks[1].Position.X, Blocks[1].Position.Y);

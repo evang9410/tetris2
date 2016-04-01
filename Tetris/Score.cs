@@ -29,6 +29,10 @@ namespace Tetris {
             get { return points; }
         }
 
+        /// <summary>
+        /// Method incrementing the score
+        /// </summary>
+        /// <param name="num"></param>
         public void incrementLinesCleared(int num) {
             lines += num;
             points += num * num;

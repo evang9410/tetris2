@@ -7,8 +7,8 @@ using Microsoft.Xna.Framework;
 
 namespace Tetris {
     public class ShapeO : Shape {
-        public ShapeO(IBoard board)
-            : base(board) {
+        public ShapeO(IBoard board) : base(board) {
+            // Init
             Blocks[0] = new Block(Color.Yellow, new Point(Board.GetLength(0) / 2, 0), Board);
             Blocks[1] = new Block(Color.Yellow, new Point(Board.GetLength(0) / 2 + 1, 0), Board);
             Blocks[2] = new Block(Color.Yellow, new Point(Board.GetLength(0) / 2, 1), Board);
@@ -16,6 +16,7 @@ namespace Tetris {
         }
 
         public override void Reset() {
+            // Same as init
             Blocks[0] = new Block(Color.Yellow, new Point(Board.GetLength(0) / 2, 0), Board);
             Blocks[1] = new Block(Color.Yellow, new Point(Board.GetLength(0) / 2 + 1, 0), Board);
             Blocks[2] = new Block(Color.Yellow, new Point(Board.GetLength(0) / 2, 1), Board);
@@ -25,7 +26,7 @@ namespace Tetris {
         }
 
         public override void Rotate() {
-            this.Reset();
+            // Do nothing since a square doesn't "really" rotate
         }
     }
 }

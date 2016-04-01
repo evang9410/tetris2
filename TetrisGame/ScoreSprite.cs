@@ -14,7 +14,6 @@ namespace MonoGame {
         private Game game;
         private SpriteBatch spriteBatch;
 
-        //To render
         private SpriteFont font;
 
         public ScoreSprite(Game game, Score score) : base(game) {
@@ -25,6 +24,7 @@ namespace MonoGame {
         public override void Initialize() {
             base.Initialize();
         }
+
         protected override void LoadContent() {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = game.Content.Load<SpriteFont>("scorefont");
@@ -39,6 +39,7 @@ namespace MonoGame {
         public override void Draw(GameTime gameTime) {
             spriteBatch.Begin();
 
+            // Updating text fields
             spriteBatch.DrawString(font, "Level: " + score.Level, new Vector2(204, 2), Color.Black);
             spriteBatch.DrawString(font, "Lines: " + score.Lines, new Vector2(204, 22), Color.Black);
             spriteBatch.DrawString(font, "Points: " + score.Points, new Vector2(204, 42), Color.Black);

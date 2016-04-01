@@ -9,6 +9,7 @@ namespace Tetris {
     public class ShapeL : Shape {
         public ShapeL(IBoard board)
             : base(board) {
+            // Init
             Blocks[0] = new Block(Color.Orange, new Point(Board.GetLength(0) / 2, 0), Board);
             Blocks[1] = new Block(Color.Orange, new Point(Board.GetLength(0) / 2, 1), Board);
             Blocks[2] = new Block(Color.Orange, new Point(Board.GetLength(0) / 2, 2), Board);
@@ -16,6 +17,7 @@ namespace Tetris {
         }
 
         public override void Reset() {
+            // Same as init
             Blocks[0] = new Block(Color.Orange, new Point(Board.GetLength(0) / 2, 0), Board);
             Blocks[1] = new Block(Color.Orange, new Point(Board.GetLength(0) / 2, 1), Board);
             Blocks[2] = new Block(Color.Orange, new Point(Board.GetLength(0) / 2, 2), Board);
@@ -25,6 +27,7 @@ namespace Tetris {
         }
 
         public override void Rotate() {
+            // Adding to the current block position to move them to the desired position
             if (currentRotation == 0 && Blocks[0].Position.X <= Board.GetLength(0) - 3) {
                 Blocks[0].Position = new Point(Blocks[0].Position.X, Blocks[0].Position.Y);
                 Blocks[1].Position = new Point(Blocks[1].Position.X, Blocks[1].Position.Y);

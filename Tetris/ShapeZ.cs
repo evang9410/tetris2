@@ -7,8 +7,8 @@ using Microsoft.Xna.Framework;
 
 namespace Tetris {
     public class ShapeZ : Shape {
-        public ShapeZ(IBoard board)
-            : base(board) {
+        public ShapeZ(IBoard board) : base(board) {
+            // Init
             Blocks[0] = new Block(Color.DarkGreen, new Point(Board.GetLength(0) / 2, 0), Board);
             Blocks[1] = new Block(Color.DarkGreen, new Point(Board.GetLength(0) / 2 + 1, 0), Board);
             Blocks[2] = new Block(Color.DarkGreen, new Point(Board.GetLength(0) / 2 + 1, 1), Board);
@@ -16,6 +16,7 @@ namespace Tetris {
         }
 
         public override void Reset() {
+            // Same as init
             Blocks[0] = new Block(Color.DarkGreen, new Point(Board.GetLength(0) / 2, 0), Board);
             Blocks[1] = new Block(Color.DarkGreen, new Point(Board.GetLength(0) / 2 + 1, 0), Board);
             Blocks[2] = new Block(Color.DarkGreen, new Point(Board.GetLength(0) / 2 + 1, 1), Board);
@@ -25,6 +26,7 @@ namespace Tetris {
         }
 
         public override void Rotate() {
+            // Adding to the current block position to move them to the desired position
             if (currentRotation == 0 && Blocks[0].Position.Y <= Board.GetLength(1) - 2) {
                 Blocks[0].Position = new Point(Blocks[0].Position.X + 1, Blocks[0].Position.Y);
                 Blocks[1].Position = new Point(Blocks[1].Position.X, Blocks[1].Position.Y + 1);

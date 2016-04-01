@@ -11,19 +11,30 @@ namespace Tetris {
         private IShape current;
         private IBoard board;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="board"></param>
         public ShapeProxy(IBoard board) {
             this.board = board;
             rnd = new Random();
         }
 
+        /// <summary>
+        /// Property accessor for current shape
+        /// </summary>
         public IShape CurrentShape
         {
             get { return current; }
         }
 
+        /// <summary>
+        /// Method making new shape to interact with
+        /// </summary>
         public void DeployNewShape() {
+            // Get random number to get a shape
             int shape = rnd.Next(0, 7);
-            shape = 5;
+
             switch (shape) {
                 case 0:
                     current = new ShapeI(board);
@@ -51,11 +62,19 @@ namespace Tetris {
             current.JoinPile += onJoinPile;
         }
 
+        /// <summary>
+        /// Property accessor for shape array lenght
+        /// </summary>
         public int Length
         {
             get { return current.Length; }
         }
 
+        /// <summary>
+        /// Indexer to get block in shape
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
         public Block this[int i]
         {
             get { return current[i]; }
@@ -63,33 +82,55 @@ namespace Tetris {
 
         public event JoinPileHandler JoinPile;
 
+        /// <summary>
+        /// Method handling when shape joins the pile
+        /// </summary>
+        /// <param name="current"></param>
         protected virtual void onJoinPile(IShape current) {
             if (JoinPile != null) {
                 JoinPile(current);
             }
         }
 
+        /// <summary>
+        /// Method moving current shape to the left
+        /// </summary>
         public void MoveLeft() {
             current.MoveLeft();
         }
 
+        /// <summary>
+        /// Method moving current shape to the right
+        /// </summary>
         public void MoveRight() {
             current.MoveRight();
 
         }
 
+        /// <summary>
+        /// Method moving current shape down
+        /// </summary>
         public void MoveDown() {
             current.MoveDown();
         }
 
+        /// <summary>
+        /// Method moving current shape to the bottom of the board
+        /// </summary>
         public void Drop() {
             current.Drop();
         }
 
+        /// <summary>
+        /// Method rotating current shape
+        /// </summary>
         public void Rotate() {
             current.Rotate();
         }
 
+        /// <summary>
+        /// Method reseting current shape
+        /// </summary>
         public void Reset() {
             current.Reset();
         }

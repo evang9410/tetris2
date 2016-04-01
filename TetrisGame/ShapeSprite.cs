@@ -13,21 +13,17 @@ using Microsoft.Xna.Framework.Media;
 
 namespace MonoGame {
     class ShapeSprite : DrawableGameComponent {
-        // private IShape shape;
         private IBoard board;
         private Game game;
         private SpriteBatch spriteBatch;
 
-        //for movedown frequency
         private Score score;
         private int counterMoveDown;
         int freq;
 
-        //for keyboard input
         private KeyboardState oldstate;
         private int threshold;
 
-        //To Render
         private Texture2D filledBlock;
 
         public ShapeSprite(Game game, IBoard board, Score score) : base(game) {
@@ -74,6 +70,7 @@ namespace MonoGame {
         private void checkInput() {
             KeyboardState newState = Keyboard.GetState();
 
+            // Checking for right arrow
             if (newState.IsKeyDown(Keys.Right)) {
                 if (!oldstate.IsKeyDown(Keys.Right)) {
                     board.Shape.MoveRight();
@@ -87,6 +84,7 @@ namespace MonoGame {
                 }
             }
 
+            // Checking for left arrow
             if (newState.IsKeyDown(Keys.Left)) {
                 if (!oldstate.IsKeyDown(Keys.Left)) {
                     board.Shape.MoveLeft();
@@ -100,6 +98,7 @@ namespace MonoGame {
                 }
             }
 
+            // Checking for down arrow
             if (newState.IsKeyDown(Keys.Down)) {
                 if (!oldstate.IsKeyDown(Keys.Down)) {
                     board.Shape.Drop();
@@ -109,6 +108,7 @@ namespace MonoGame {
                 }
             }
 
+            // Checking for space
             if (newState.IsKeyDown(Keys.Space)) {
                 if (!oldstate.IsKeyDown(Keys.Space)) {
                     board.Shape.Rotate();
