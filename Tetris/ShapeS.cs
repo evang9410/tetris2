@@ -25,14 +25,14 @@ namespace Tetris {
         }
 
         public override void Rotate() {
-            if (currentRotation == 0) {
+            if (currentRotation == 0 && Blocks[0].Position.Y <= Board.GetLength(1) - 2) {
                 Blocks[0].Position = new Point(Blocks[0].Position.X, Blocks[0].Position.Y - 1);
                 Blocks[1].Position = new Point(Blocks[1].Position.X - 1, Blocks[1].Position.Y);
                 Blocks[2].Position = new Point(Blocks[2].Position.X, Blocks[2].Position.Y + 1);
                 Blocks[3].Position = new Point(Blocks[3].Position.X - 1, Blocks[3].Position.Y + 2);
 
                 currentRotation = 1;
-            } else if (currentRotation == 1) {
+            } else if (currentRotation == 1 && Blocks[0].Position.X <= Board.GetLength(0) - 3) {
                 Blocks[0].Position = new Point(Blocks[0].Position.X, Blocks[0].Position.Y + 1);
                 Blocks[1].Position = new Point(Blocks[1].Position.X + 1, Blocks[1].Position.Y);
                 Blocks[2].Position = new Point(Blocks[2].Position.X, Blocks[2].Position.Y - 1);

@@ -25,32 +25,32 @@ namespace Tetris {
         }
 
         public override void Rotate() {
-            if (currentRotation == 0) {
+            if (currentRotation == 0 && Blocks[0].Position.X <= Board.GetLength(0) - 3) {
                 Blocks[0].Position = new Point(Blocks[0].Position.X, Blocks[0].Position.Y);
                 Blocks[1].Position = new Point(Blocks[1].Position.X, Blocks[1].Position.Y);
                 Blocks[2].Position = new Point(Blocks[2].Position.X + 1, Blocks[2].Position.Y - 2);
                 Blocks[3].Position = new Point(Blocks[3].Position.X + 1, Blocks[3].Position.Y - 2);
 
                 currentRotation = 1;
-            } else if (currentRotation == 1) {
+            } else if (currentRotation == 1 && Blocks[0].Position.Y <= Board.GetLength(1) - 3) {
                 Blocks[0].Position = new Point(Blocks[0].Position.X + 1, Blocks[0].Position.Y);
                 Blocks[1].Position = new Point(Blocks[1].Position.X + 2, Blocks[1].Position.Y - 1);
                 Blocks[2].Position = new Point(Blocks[2].Position.X + 1, Blocks[2].Position.Y + 1);
                 Blocks[3].Position = new Point(Blocks[3].Position.X, Blocks[3].Position.Y + 2);
 
                 currentRotation = 2;
-            } else if (currentRotation == 2) {
-                Blocks[0].Position = new Point(Blocks[0].Position.X + 1, Blocks[0].Position.Y); //2,0
-                Blocks[1].Position = new Point(Blocks[1].Position.X, Blocks[1].Position.Y + 1); //2,1
-                Blocks[2].Position = new Point(Blocks[2].Position.X - 1, Blocks[2].Position.Y); //1,1
-                Blocks[3].Position = new Point(Blocks[3].Position.X - 2, Blocks[3].Position.Y - 1); //0,1
+            } else if (currentRotation == 2 && Blocks[0].Position.X >= 2) {
+                Blocks[0].Position = new Point(Blocks[0].Position.X + 1, Blocks[0].Position.Y);
+                Blocks[1].Position = new Point(Blocks[1].Position.X, Blocks[1].Position.Y + 1);
+                Blocks[2].Position = new Point(Blocks[2].Position.X - 1, Blocks[2].Position.Y);
+                Blocks[3].Position = new Point(Blocks[3].Position.X - 2, Blocks[3].Position.Y - 1);
 
                 currentRotation = 3;
-            } else if (currentRotation == 3) {
-                Blocks[0].Position = new Point(Blocks[0].Position.X - 2, Blocks[0].Position.Y); //0,0
-                Blocks[1].Position = new Point(Blocks[1].Position.X - 2, Blocks[1].Position.Y); //0,1
-                Blocks[2].Position = new Point(Blocks[2].Position.X - 1, Blocks[2].Position.Y + 1); //0,2
-                Blocks[3].Position = new Point(Blocks[3].Position.X + 1, Blocks[3].Position.Y + 1); //1,2
+            } else if (currentRotation == 3 && Blocks[0].Position.Y <= Board.GetLength(1) - 3) {
+                Blocks[0].Position = new Point(Blocks[0].Position.X - 2, Blocks[0].Position.Y);
+                Blocks[1].Position = new Point(Blocks[1].Position.X - 2, Blocks[1].Position.Y);
+                Blocks[2].Position = new Point(Blocks[2].Position.X - 1, Blocks[2].Position.Y + 1);
+                Blocks[3].Position = new Point(Blocks[3].Position.X + 1, Blocks[3].Position.Y + 1);
 
                 currentRotation = 0;
             }
