@@ -24,7 +24,7 @@ namespace Tetris {
         }
 
         public override void Rotate() {
-            if (currentRotation == 0) {
+            if (currentRotation == 0 ) {
                 Blocks[0].Position = new Point(Blocks[0].Position.X, Blocks[0].Position.Y);
                 Blocks[1].Position = new Point(Blocks[1].Position.X + 1, Blocks[1].Position.Y - 1);
                 Blocks[2].Position = new Point(Blocks[2].Position.X + 2, Blocks[2].Position.Y - 2);
