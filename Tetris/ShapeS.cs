@@ -27,7 +27,7 @@ namespace Tetris {
 
         public override void Rotate() {
             // Adding to the current block position to move them to the desired position
-            if (currentRotation == 0 && Blocks[0].Position.Y <= Board.GetLength(1) - 2) {
+            if (currentRotation == 0 && Blocks[0].Position.Y <= Board.GetLength(1) - 3) {
                 Blocks[0].Position = new Point(Blocks[0].Position.X, Blocks[0].Position.Y - 1);
                 Blocks[1].Position = new Point(Blocks[1].Position.X - 1, Blocks[1].Position.Y);
                 Blocks[2].Position = new Point(Blocks[2].Position.X, Blocks[2].Position.Y + 1);
