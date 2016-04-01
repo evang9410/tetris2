@@ -31,7 +31,7 @@ namespace TetrisTest
             Board board = new Board();
             Score newScore = new Score(board);
             newScore.incrementLinesCleared(2);
-            Assert.AreEqual(newScore.Scores, 4);
+            Assert.AreEqual(newScore.Points, 4);
 
         }
 

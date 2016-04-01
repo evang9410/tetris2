@@ -4,14 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tetris
-{
+namespace Tetris {
     public delegate void JoinPileHandler(IShape shape);
-    public interface IShape
-    {
+    public interface IShape {
         int Length
         {
-            get; 
+            get;
         }
 
         Block this[int i]

@@ -7,10 +7,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace MonoGame
-{
-    class ScoreSprite: DrawableGameComponent
-    {
+namespace MonoGame {
+    class ScoreSprite : DrawableGameComponent {
         private Score score;
 
         private Game game;
@@ -19,33 +17,28 @@ namespace MonoGame
         //To render
         private SpriteFont font;
 
-        public ScoreSprite(Game game, Score score) : base(game)
-        {
+        public ScoreSprite(Game game, Score score) : base(game) {
             this.game = game;
             this.score = score;
         }
 
-        public override void Initialize()
-        {
+        public override void Initialize() {
             base.Initialize();
         }
-        protected override void LoadContent()
-        {
+        protected override void LoadContent() {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = game.Content.Load<SpriteFont>("scorefont");
             base.LoadContent();
-           
+
         }
 
-        public override void Update(GameTime gameTime)
-        {
+        public override void Update(GameTime gameTime) {
             base.Update(gameTime);
         }
 
-        public override void Draw(GameTime gameTime)
-        {
+        public override void Draw(GameTime gameTime) {
             spriteBatch.Begin();
-            
+
             spriteBatch.DrawString(font, "Level: " + score.Level, new Vector2(204, 2), Color.Black);
             spriteBatch.DrawString(font, "Lines: " + score.Lines, new Vector2(204, 22), Color.Black);
             spriteBatch.DrawString(font, "Points: " + score.Points, new Vector2(204, 42), Color.Black);
@@ -53,6 +46,6 @@ namespace MonoGame
             spriteBatch.End();
             base.Draw(gameTime);
         }
-        
+
     }
 }

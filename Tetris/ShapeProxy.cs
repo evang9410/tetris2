@@ -5,16 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
-namespace Tetris
-{
-    public class ShapeProxy: IShape, IShapeFactory
-    {
+namespace Tetris {
+    public class ShapeProxy : IShape, IShapeFactory {
         private static Random rnd;
         private IShape current;
         private IBoard board;
 
-        public ShapeProxy(IBoard board)
-        {
+        public ShapeProxy(IBoard board) {
             this.board = board;
             rnd = new Random();
         }
@@ -24,13 +21,11 @@ namespace Tetris
             get { return current; }
         }
 
-        public void DeployNewShape()
-        {
+        public void DeployNewShape() {
             int shape = rnd.Next(0, 7);
-            
-            switch (shape)
-            {
-                case 0: 
+            shape = 0;
+            switch (shape) {
+                case 0:
                     current = new ShapeI(board);
                     break;
                 case 1:
@@ -67,42 +62,35 @@ namespace Tetris
         }
 
         public event JoinPileHandler JoinPile;
-        protected virtual void onJoinPile(IShape current)
-        {
-            if (JoinPile != null)
-            {
+
+        protected virtual void onJoinPile(IShape current) {
+            if (JoinPile != null) {
                 JoinPile(current);
             }
         }
 
-        public void MoveLeft()
-        { 
+        public void MoveLeft() {
             current.MoveLeft();
         }
 
-        public void MoveRight()
-        {
-           current.MoveRight();
- 
+        public void MoveRight() {
+            current.MoveRight();
+
         }
 
-        public void MoveDown()
-        {
+        public void MoveDown() {
             current.MoveDown();
         }
 
-        public void Drop()
-        {
+        public void Drop() {
             current.Drop();
         }
 
-        public void Rotate()
-        {
+        public void Rotate() {
             current.Rotate();
         }
 
-        public void Reset()
-        {
+        public void Reset() {
             current.Reset();
         }
     }

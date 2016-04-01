@@ -5,16 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
-namespace Tetris
-{
-    public delegate void  LinesClearedHandler(int lines);
+namespace Tetris {
+    public delegate void LinesClearedHandler(int lines);
     public delegate bool GameOverHandler(bool isOver);
 
     /// <summary>
     /// Properties
     /// </summary>
-    public interface IBoard
-    {
+    public interface IBoard {
         IShape Shape
         {
             get;
@@ -39,7 +37,7 @@ namespace Tetris
         /// </summary>
         /// <param name="rank"></param>
         /// <returns></returns>
-         int GetLength(int rank);
+        int GetLength(int rank);
 
     }
 

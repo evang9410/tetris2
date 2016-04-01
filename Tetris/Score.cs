@@ -4,16 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tetris
-{
-    public class Score
-    {
+namespace Tetris {
+    public class Score {
         private int level;
         private int lines;
         private int points;
 
-        public Score(Board board)
-        {    
+        public Score(Board board) {
             board.LinesCleared += incrementLinesCleared;
             level = 1;
             lines = 0;
@@ -32,12 +29,11 @@ namespace Tetris
             get { return points; }
         }
 
-        public void incrementLinesCleared(int num)
-        {
+        public void incrementLinesCleared(int num) {
             lines += num;
             points += num * num;
-            level = Math.Min(lines /10 + 1, 10);
+            level = Math.Min(lines / 10 + 1, 10);
         }
-         
+
     }
 }

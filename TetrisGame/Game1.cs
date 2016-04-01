@@ -3,13 +3,11 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Tetris;
 
-namespace MonoGame
-{
+namespace MonoGame {
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class Game1 : Game
-    {
+    public class Game1 : Game {
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
         private BoardSprite boardSprite;
@@ -18,11 +16,10 @@ namespace MonoGame
 
 
         public Game1()
-            : base()
-        {
+            : base() {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            
+
             graphics.PreferredBackBufferHeight = 404;
             graphics.PreferredBackBufferWidth = 304;
         }
@@ -33,12 +30,11 @@ namespace MonoGame
         /// related content.  Calling base.Initialize will enumerate through any components
         /// and initialize them as well.
         /// </summary>
-        protected override void Initialize()
-        {
+        protected override void Initialize() {
             IBoard board = new Board();
             Score score = new Score((Board)board);
             // TODO: Add your initialization logic here
-            
+
             boardSprite = new BoardSprite(this, board);
             shapeSprite = new ShapeSprite(this, board, score);
             scoreSprite = new ScoreSprite(this, score);
@@ -57,21 +53,19 @@ namespace MonoGame
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
         /// </summary>
-        protected override void LoadContent()
-        {
+        protected override void LoadContent() {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            
+
         }
 
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
         /// all content.
         /// </summary>
-        protected override void UnloadContent()
-        {
+        protected override void UnloadContent() {
             // TODO: Unload any non ContentManager content here
         }
 
@@ -80,8 +74,7 @@ namespace MonoGame
         /// checking for collisions, gathering input, and playing audio.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Update(GameTime gameTime)
-        {
+        protected override void Update(GameTime gameTime) {
             //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             //    Exit();
 
@@ -94,8 +87,7 @@ namespace MonoGame
         /// This is called when the game should draw itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Draw(GameTime gameTime)
-        {
+        protected override void Draw(GameTime gameTime) {
             GraphicsDevice.Clear(new Color(80, 80, 80));
             var fps = 1 / gameTime.ElapsedGameTime.TotalSeconds;
 
@@ -105,8 +97,7 @@ namespace MonoGame
         }
 
 
-        private bool gameOver(bool isOver)
-        {
+        private bool gameOver(bool isOver) {
             Components.Remove(shapeSprite);
             isOver = true;
             return isOver;
